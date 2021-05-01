@@ -19,8 +19,10 @@
 {d8a92196-e61f-496d-ac16-6d518665831f} event:/Cockpit/Controls/Levers/gear_lever
 {22572849-fb94-4f3b-8a98-6c5e0c85b5a6} event:/Cockpit/Controls/Levers/park_brake
 {0ca9d8f8-569c-4e7a-8bb6-b5c702a0378d} event:/Cockpit/Controls/Levers/throttle_idle
+{083b76e4-fd06-43aa-9a53-8f91746d937d} event:/Cockpit/Controls/Levers/button1_on
+{e4c5f370-45e1-46bb-8127-46f8cc4b5ce3} event:/Cockpit/Controls/Levers/button1_off
 {a914c586-d870-49ad-9bc3-ab9078691c76} event:/Engines/GE90/engine1
-{6ff70c4d-6a85-47fe-b895-3b61facf3fdd} event:/Engines/GE90/engine2
+{6ec6bf47-a70a-4f20-a9f1-c3d1d84372ea} event:/Engines/GE90/engine2
 {da37da4a-6c1a-4880-b8cb-1450b3ffbb58} event:/Warnings/GPWS/10
 {f83b0b25-6782-45ca-b7ed-0c2a8c965198} event:/Warnings/GPWS/100
 {c4bfaeb8-c880-4bad-908f-51e89b9e6202} event:/Warnings/GPWS/1000
@@ -55,10 +57,10 @@
 {aabd0f8e-7de0-4b91-b9b1-2f8d2594a3fd} event:/Warnings/autopilot_loop
 {cbeb847c-f103-4826-b7a2-eff938d5757b} event:/Warnings/chime
 {b28e80fe-09fc-4cbb-99cc-96dae2549d87} event:/Warnings/ground_horn
+{f00ad846-ee51-4d48-bb14-3d3da62c92de} event:/Warnings/hi_chime
 {b9f47fac-7f7b-4546-b47b-60de241c595b} event:/Warnings/master_caution
 {97403aaa-cf71-4233-a23f-5dd9393210df} event:/Warnings/master_warning
 {c44f6fc7-33ed-40cd-a3a9-62f5f68d2f4b} event:/Warnings/startup_chime
-{f00ad846-ee51-4d48-bb14-3d3da62c92de} event:/Warnings/hi_chime
 {9f08114d-36ec-44cc-b8bf-b2babda09f9e} bus:/
 {7f7c05a4-e05a-4d44-94fe-d4691147a9b7} bus:/Master
 {e3492bec-f854-4fbb-b2bc-23586269032e} bus:/Master/Copilot
