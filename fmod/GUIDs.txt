@@ -14,13 +14,14 @@
 {8d0f4820-be78-4e5b-9030-913254741871} event:/Cockpit/Avionics/Fans/ecs_test
 {e3d1444f-02a9-4bf4-980f-00426711c4dd} event:/Cockpit/Avionics/Fans/fans
 {a7961d47-06f1-4ead-b856-c4a00f7d2c48} event:/Cockpit/Avionics/Fans/fans_off
+{f8322676-39c0-4651-88e1-0dde91a291e1} event:/Cockpit/Avionics/avionics
 {2a628f93-d4c9-4d56-8723-54b05b7a3a26} event:/Cockpit/Avionics/battery
 {ee7a1c0c-3bbd-4b7f-bf2f-2a94f72a23ee} event:/Cockpit/Controls/Levers/flap_lever
 {d8a92196-e61f-496d-ac16-6d518665831f} event:/Cockpit/Controls/Levers/gear_lever
 {22572849-fb94-4f3b-8a98-6c5e0c85b5a6} event:/Cockpit/Controls/Levers/park_brake
 {0ca9d8f8-569c-4e7a-8bb6-b5c702a0378d} event:/Cockpit/Controls/Levers/throttle_idle
-{083b76e4-fd06-43aa-9a53-8f91746d937d} event:/Cockpit/Controls/Levers/button1_on
-{e4c5f370-45e1-46bb-8127-46f8cc4b5ce3} event:/Cockpit/Controls/Levers/button1_off
+{e4c5f370-45e1-46bb-8127-46f8cc4b5ce3} event:/Cockpit/Controls/button1_off
+{083b76e4-fd06-43aa-9a53-8f91746d937d} event:/Cockpit/Controls/button1_on
 {a914c586-d870-49ad-9bc3-ab9078691c76} event:/Engines/GE90/engine1
 {6ec6bf47-a70a-4f20-a9f1-c3d1d84372ea} event:/Engines/GE90/engine2
 {da37da4a-6c1a-4880-b8cb-1450b3ffbb58} event:/Warnings/GPWS/10
@@ -56,6 +57,7 @@
 {be5fc563-5a1d-438b-9325-b6ceab1bceb6} event:/Warnings/autopilot
 {aabd0f8e-7de0-4b91-b9b1-2f8d2594a3fd} event:/Warnings/autopilot_loop
 {cbeb847c-f103-4826-b7a2-eff938d5757b} event:/Warnings/chime
+{f3fb98d4-52e0-424e-a476-cde7e45cf139} event:/Warnings/fire_bell
 {b28e80fe-09fc-4cbb-99cc-96dae2549d87} event:/Warnings/ground_horn
 {f00ad846-ee51-4d48-bb14-3d3da62c92de} event:/Warnings/hi_chime
 {b9f47fac-7f7b-4546-b47b-60de241c595b} event:/Warnings/master_caution
