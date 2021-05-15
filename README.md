@@ -17,7 +17,7 @@ A: Don't close it. It helps the developers find bugs and fix them. If you close 
 
 **Q: How can I contribute to this aircraft?**
 
-A: Please use the [github issue page](https://github.com/StratosphereStudios/777/issues) if you find a problem. Please add details if your issue is already listed. Feel free to fork this repository and help improve the aircraft.
+A: Please use the [Github issue page](https://github.com/StratosphereStudios/777/issues) if you find a problem. Please add details if your issue is already listed. Feel free to fork this repository and help improve the aircraft.
 
 ### Installation
 Just extract the folder and move it to your X-Plane aircraft folder. For stable releases, look [here](https://github.com/StratosphereStudios/777/releases), and for all the latest updates, go [here](https://github.com/StratosphereStudios/777), click the green "Code" button, then click Download Zip"
