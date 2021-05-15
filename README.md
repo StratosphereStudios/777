@@ -9,7 +9,7 @@ A: We are very early in development, and have no release date at this time.
 
 **Q: Where can I follow progress and announcements for this aircraft?**
 
-A: Keep up with the project on our [Discord Server!](https://discord.gg/s25sxgwMRt)
+A: Keep up with the project on our [Discord Server!](https://discord.gg/s25sxgwMRt) You can also see a detailed changelog [here](https://github.com/StratosphereStudios/777/commits/main).
 
 **Q: How can I contribute to this aircraft?**
 
