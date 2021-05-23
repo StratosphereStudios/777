@@ -17,9 +17,11 @@ A: Don't close it. It helps the developers find bugs and fix them. If you close 
 
 **Q: How can I contribute to this aircraft?**
 
-A: Please use the [Github issue page](https://github.com/StratosphereStudios/777/issues) if you find a problem. Please add details if your issue is already listed. Feel free to fork this repository and help improve the aircraft.
+A: Please use the [Github issue page](https://github.com/StratosphereStudios/777/issues) to report any problems you find. This will greatly help us fix issues.
+
+If you want to help out and you have some dev skills, feel free to fork, update, and make a pull request!
 
 ### Installation
-Just extract the folder and move it to your X-Plane aircraft folder. For stable releases, look [here](https://github.com/StratosphereStudios/777/releases), and for all the latest updates, go [here](https://github.com/StratosphereStudios/777), click the green "Code" button, then click Download Zip"
+Just extract the folder and move it to your X-Plane aircraft folder. For stable releases, look [here](https://github.com/StratosphereStudios/777/releases), and for all the latest updates, go [here](https://github.com/StratosphereStudios/777), click the green "Code" button, then click "Download Zip"
 
 If you're on Windows, you'll need to install [C++ support](https://www.microsoft.com/en-us/download/details.aspx?id=13523) and [multithreading support](https://aka.ms/vs/16/release/vc_redist.x64.exe) in order to use this aircraft.
