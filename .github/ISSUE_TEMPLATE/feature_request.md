@@ -7,12 +7,15 @@ assignees: ''
 
 ---
 
-## Feaure Request
+# Feaure Request
 
 
-**Describe the feature**
+## Describe the feature
 Replace this line and describe the feature here. Please be CLEAR AND CONCISE.
 
 
-**Visual Reference**
+
+## Visual Reference
 If applicable, add screenshots or videos to help explain your request. Please upload or send a link below:
+
+
