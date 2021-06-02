@@ -31,6 +31,6 @@ If you're on Windows, you'll need to install [C++ support](https://www.microsoft
 
 [Matt726](https://github.com/Matt726-S): Sounds, Documentation, Development Management.
 
-[Crazytimtimtim](https://github.com/crazytimtimtim): Code, Documenation, Development Management.
+[Crazytimtimtim](https://github.com/crazytimtimtim): Code, Some documenation, Development Management.
 
 Potatohead123: Landing gear, cockpit, engines.
