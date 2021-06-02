@@ -27,10 +27,10 @@ Just extract the folder and move it to your X-Plane aircraft folder. For stable 
 If you're on Windows, you'll need to install [C++ support](https://www.microsoft.com/en-us/download/details.aspx?id=13523) and [multithreading support](https://aka.ms/vs/16/release/vc_redist.x64.exe) in order to use this aircraft.
 
 ## Credits
-[Nathroxer (Head)](https://github.com/nathroxer): Cockpit, instruments, animations, aircraft exterior, acf file, Development Mangement.
+[Nathroxer (Head)](https://github.com/nathroxer): Cockpit, instruments, animations, aircraft exterior, acf file, Development Management.
 
 [Matt726](https://github.com/Matt726-S): Sounds, Documentation, Development Management.
 
-[Crazytimtimtim](https://github.com/crazytimtimtim): Code, Development Management.
+[Crazytimtimtim](https://github.com/crazytimtimtim): Code, Documenation, Development Management.
 
 Potatohead123: Landing gear, cockpit, engines.
