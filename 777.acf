@@ -203,7 +203,7 @@ P _gear/0/_gear_can_retract 1
 P _gear/0/_gear_castors 0
 P _gear/0/_gear_def_empty 0.0
 P _gear/0/_gear_def_gross 0.0
-P _gear/0/_gear_load_fraction 0.148384422
+P _gear/0/_gear_load_fraction 0.151430234
 P _gear/0/_gear_type 3
 P _gear/0/_gear_x 0.0
 P _gear/0/_gear_y -7.500000000
@@ -216,7 +216,7 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 0.0
 P _gear/0/_lonR 110.0
 P _gear/0/_scon 172681.812500000
-P _gear/0/_stat_def 0.564589322
+P _gear/0/_stat_def 0.574444890
 P _gear/0/_steerdeg_hispeed 12.0
 P _gear/0/_steerdeg_lospeed 60.0
 P _gear/0/_strut_comp 0.0
@@ -237,7 +237,7 @@ P _gear/1/_gear_can_retract 1
 P _gear/1/_gear_castors 0
 P _gear/1/_gear_def_empty 0.0
 P _gear/1/_gear_def_gross 0.0
-P _gear/1/_gear_load_fraction 0.425807774
+P _gear/1/_gear_load_fraction 0.424284875
 P _gear/1/_gear_type 6
 P _gear/1/_gear_x 18.0
 P _gear/1/_gear_y -5.400000095
@@ -250,7 +250,7 @@ P _gear/1/_lonE -9.0
 P _gear/1/_lonN -9.0
 P _gear/1/_lonR 8.0
 P _gear/1/_scon 218333.328125000
-P _gear/1/_stat_def 1.286265850
+P _gear/1/_stat_def 1.272975206
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -271,7 +271,7 @@ P _gear/2/_gear_can_retract 1
 P _gear/2/_gear_castors 0
 P _gear/2/_gear_def_empty 0.0
 P _gear/2/_gear_def_gross 0.0
-P _gear/2/_gear_load_fraction 0.425807774
+P _gear/2/_gear_load_fraction 0.424284875
 P _gear/2/_gear_type 6
 P _gear/2/_gear_x -18.0
 P _gear/2/_gear_y -5.400000095
@@ -284,7 +284,7 @@ P _gear/2/_lonE -9.0
 P _gear/2/_lonN -9.0
 P _gear/2/_lonR 8.0
 P _gear/2/_scon 218333.328125000
-P _gear/2/_stat_def 1.286265850
+P _gear/2/_stat_def 1.272975206
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -29894,7 +29894,7 @@ P _part/85/_part_specs_invis 1
 P _part/85/_part_tex 0
 P _part/85/_part_the 0.0
 P _part/85/_part_x 0.0
-P _part/85/_part_y -15.935410500
+P _part/85/_part_y -15.925555229
 P _part/85/_part_z 3.960000038
 P _part/85/_patt_con 0
 P _part/85/_patt_prt 0
@@ -31364,7 +31364,7 @@ P _part/86/_part_specs_invis 1
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 18.0
-P _part/86/_part_y -15.768457413
+P _part/86/_part_y -15.781748772
 P _part/86/_part_z 108.245925903
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -32834,7 +32834,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x -18.0
-P _part/87/_part_y -15.768457413
+P _part/87/_part_y -15.781748772
 P _part/87/_part_z 108.245925903
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -40260,7 +40260,7 @@ P acf/_Gneg 2.500000000
 P acf/_Gpos 2.500000000
 P acf/_HUD_del_x 570.0
 P acf/_HUD_del_y 150.0
-P acf/_ICAO 77w
+P acf/_ICAO B77W
 P acf/_ITT_is_C 0
 P acf/_Jxx_unitmass 0.0
 P acf/_Jyy_unitmass 0.0
@@ -40298,7 +40298,7 @@ P acf/_Vy_kts 0.0
 P acf/_Vyse_kts 0.0
 P acf/_add_def_exceeds_base_def 0
 P acf/_additonal_gear_flatplate 0.0
-P acf/_ai_can_fly 0
+P acf/_ai_can_fly 1
 P acf/_ailn1_cratR 0.200000003
 P acf/_ailn1_cratT 0.200000003
 P acf/_ailn1_dn 18.0
@@ -40923,7 +40923,7 @@ P acf/_ann_wav_file/count 197
 P acf/_ap_crs_src 0
 P acf/_apt_req_plane 0
 P acf/_asi_is_kts 1
-P acf/_author nathroxer
+P acf/_author Nathroxer + Team
 P acf/_auto_cowl_flaps_EQ 1065353216
 P acf/_auto_engage_BC_deg 0.0
 P acf/_auto_omega_fire 0.0
@@ -42566,7 +42566,7 @@ P acf/_ground_pwr/0 -20.0
 P acf/_ground_pwr/1 0.0
 P acf/_ground_pwr/2 160.0
 P acf/_ground_pwr/count 3
-P acf/_h_eqlbm 16.175617218
+P acf/_h_eqlbm 16.183937073
 P acf/_has_ADG 0
 P acf/_has_APU_bleed_air 1
 P acf/_has_APU_generator 1
@@ -42732,7 +42732,7 @@ P acf/_mixt_x_ctr 0.0
 P acf/_n1_power_curve1 2.0
 P acf/_n1_power_curve2 3.0
 P acf/_n2_power_curve 3.500000000
-P acf/_name Boeing 777-300er
+P acf/_name Boeing 777-300ER
 P acf/_new_plot_XP3D_cock/0 0
 P acf/_new_plot_XP3D_cock/1 1
 P acf/_new_plot_XP3D_cock/2 0
@@ -42756,6 +42756,7 @@ P acf/_nom_bat_volt 24.0
 P acf/_nom_fuelP 30.0
 P acf/_nom_gen_volt 26.0
 P acf/_nom_oilP 20.0
+P acf/_notes Early Version
 P acf/_num_batteries 2
 P acf/_num_braking_wheels 0.0
 P acf/_num_buses 2
@@ -43150,7 +43151,7 @@ P acf/_starter_max_rpm_rat 1.0
 P acf/_starter_torque_rat 0.500000000
 P acf/_steerdeg_castor 0.0
 P acf/_stickshaker 1
-P acf/_studio stratoshpere studios
+P acf/_studio Stratosphere Studios
 P acf/_sweep_extend_protect 0
 P acf/_sweep_m1 0.0
 P acf/_sweep_m2 0.0
@@ -43168,7 +43169,7 @@ P acf/_tail_rot_with_v2_kts 0.0
 P acf/_tail_rotor_lf_trim_rat 1.0
 P acf/_tail_rotor_rt_trim_rat 1.0
 P acf/_tail_with_coll 0.0
-P acf/_tailnum VIIT
+P acf/_tailnum ASXGSA
 P acf/_tailrotor_EQ 0
 P acf/_takeoff_trim_11 0.0
 P acf/_tank_part_en/0 0
@@ -43269,7 +43270,7 @@ P acf/_tank_xyz_full/8,1 0.0
 P acf/_tank_xyz_full/8,2 0.0
 P acf/_tank_xyz_full/i_count 9
 P acf/_tank_xyz_full/j_count 3
-P acf/_the_eqlbm -0.162831709
+P acf/_the_eqlbm -0.173718691
 P acf/_thro_non_vect_props_at_sin_vect 0
 P acf/_thro_x_ctr 0.0
 P acf/_throt_max_fwd_emr 1.090000033
