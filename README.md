@@ -1,6 +1,14 @@
 # Stratosphere Studios 777-300ER
 Freeware Boeing 777-300ER for X-Plane 11, made by Stratosphere Studios
 
+## FEATURES:
+
+(As of June 3, 2021):
+
+- Work in progress fuselage
+- Work in progress Realistic Control Surface Animations
+- High Quality GE90 FMOD Soundpack
+
 ## FAQ
 
 **Q: When is the release date?**
@@ -14,6 +22,10 @@ A: Keep up with the project on our [Discord Server!](https://discord.gg/s25sxgwM
 **Q: What is the black console window that appears when I start the aircraft?**
 
 A: Don't close it. It helps the developers find bugs and fix them. If you close this window, X-Plane will crash. Along with the log.txt, this is one of the primary tools for investigating issues.
+
+**Q: How do I start the aircraft?**
+
+A: As of now, you can't start the plane from cold and dark becasue we did not add systems yet. For now, in the X-Plane menu, set the engines on. When systems are added, [you should follow the checklists and manuals found here.](https://github.com/StratosphereStudios/777/tree/main/Documentation)
 
 **Q: How can I contribute to this aircraft?**
 
