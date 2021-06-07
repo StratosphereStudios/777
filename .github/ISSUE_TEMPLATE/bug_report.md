@@ -8,9 +8,9 @@ assignees: ''
 ---
 
 ## Bug Report
-PEOPLE WHO REPORT: Please complete the entire entry. Scroll to the bottom and be sure you fill all the required information, otherwise this report will be closed.
+Please complete the entire entry. Scroll to the bottom and be sure you fill all the required information, otherwise this report will be closed.
 
-**Describe the bug**
+**Bug Description**
 Replace this line and describe the bug here. Please be CLEAR AND CONCISE.
 
 
