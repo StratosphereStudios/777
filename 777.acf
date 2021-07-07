@@ -405,7 +405,7 @@ P _obja/16/_v10_att_z_acf_prt_ref 100.0
 P _obja/16/_v10_is_internal 75011632
 P _obja/16/_v10_steers_with_gear 0
 P _obja/17/_obj_flags 9
-P _obja/17/_v10_att_file_stl cockpit/gs.obj
+P _obja/17/_v10_att_file_stl cockpit/glareshield.obj
 P _obja/17/_v10_att_part -1
 P _obja/17/_v10_att_phi_ref 0.0
 P _obja/17/_v10_att_psi_ref 0.0
@@ -426,7 +426,7 @@ P _obja/18/_v10_att_y_acf_prt_ref 0.0
 P _obja/18/_v10_att_z_acf_prt_ref 100.0
 P _obja/18/_v10_is_internal 623418
 P _obja/18/_v10_steers_with_gear 0
-P _obja/19/_obj_flags 9
+P _obja/19/_obj_flags 11
 P _obja/19/_v10_att_file_stl cockpit/mcp.obj
 P _obja/19/_v10_att_part -1
 P _obja/19/_v10_att_phi_ref 0.0
@@ -459,7 +459,7 @@ P _obja/20/_v10_att_y_acf_prt_ref 0.0
 P _obja/20/_v10_att_z_acf_prt_ref 100.0
 P _obja/20/_v10_is_internal 697300
 P _obja/20/_v10_steers_with_gear 0
-P _obja/21/_obj_flags 9
+P _obja/21/_obj_flags 11
 P _obja/21/_v10_att_file_stl cockpit/main_pnl.obj
 P _obja/21/_v10_att_part -1
 P _obja/21/_v10_att_phi_ref 0.0
@@ -40967,7 +40967,7 @@ P acf/_ann_wav_file/count 197
 P acf/_ap_crs_src 0
 P acf/_apt_req_plane 0
 P acf/_asi_is_kts 1
-P acf/_author Nathroxer and Team
+P acf/_author Nathroxer + Team
 P acf/_auto_cowl_flaps_EQ 1065353216
 P acf/_auto_engage_BC_deg 0.0
 P acf/_auto_omega_fire 0.0
@@ -41211,7 +41211,7 @@ P acf/_bus_gen_is_on/7 1
 P acf/_bus_gen_is_on/count 8
 P acf/_buses_always_tied 1
 P acf/_bypass_ratio 10.0
-P acf/_callsign ASXGSA
+P acf/_callsign Boeing 77W
 P acf/_camera_fov_zoom 60.0
 P acf/_camera_offset_phi 0.0
 P acf/_camera_offset_psi 0.0
@@ -42800,6 +42800,7 @@ P acf/_nom_bat_volt 24.0
 P acf/_nom_fuelP 30.0
 P acf/_nom_gen_volt 26.0
 P acf/_nom_oilP 20.0
+P acf/_notes WIP
 P acf/_num_batteries 2
 P acf/_num_braking_wheels 0.0
 P acf/_num_buses 2
@@ -43212,7 +43213,7 @@ P acf/_tail_rot_with_v2_kts 0.0
 P acf/_tail_rotor_lf_trim_rat 1.0
 P acf/_tail_rotor_rt_trim_rat 1.0
 P acf/_tail_with_coll 0.0
-P acf/_tailnum ASXGSA
+P acf/_tailnum N5017V
 P acf/_tailrotor_EQ 0
 P acf/_takeoff_trim_11 0.0
 P acf/_tank_part_en/0 0
@@ -43334,7 +43335,7 @@ P acf/_truck_lon_sep 3.0
 P acf/_tvec_hdng 0.0
 P acf/_tvec_ptch 0.0
 P acf/_tvec_roll 0.0
-P acf/_use_1140_fm 0
+P acf/_use_1140_fm 1
 P acf/_use_cus_gear_damping 0
 P acf/_use_cus_gear_defs 1
 P acf/_use_manual_prop_inc 0
@@ -43549,6 +43550,38 @@ EFIS_airspeed el_airspeed.png
 
 EFIS_map_s_HM map_s_HM.png
   POS 460.000000 -30.000000
+  DATAREF 
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+ECAM_carter ECAM_carter.png
+  POS -163.000000 933.000000
+  DATAREF 
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+ECAM_pie_EPR ECAM_pie_EPR.png
+  POS -132.500000 764.500000
+  DATAREF 
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+ECAM_pie_MP ECAM_pie_mp.png
+  POS -122.000000 703.000000
+  DATAREF 
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+ECAM_mode_FAIL mode_FAIL.png
+  POS -146.000000 508.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
