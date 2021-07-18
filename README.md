@@ -1,5 +1,6 @@
 # Stratosphere Studios 777-300ER
 Freeware Boeing 777-300ER for X-Plane 11, made by Stratosphere Studios
+Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 ## FEATURES:
 
