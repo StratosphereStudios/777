@@ -45,6 +45,11 @@ IN_REPLAY - evaluates to 0 if replay is off, 1 if replay mode is on
 
 B777DR_fd_needed_for_servos               = find_dataref("sim/aircraft/systems/fdir_needed_to_engage_servos")
 
+
+--*************************************************************************************--
+--**                              CUSTOM DATAREF HANDLERS                            **--
+--*************************************************************************************--
+
 --*************************************************************************************--
 --**                              CREATE CUSTOM DATAREFS                             **--
 --*************************************************************************************--
@@ -57,7 +62,7 @@ B777DR_fms_l_button_positions_numbers     = deferred_dataref("Strato/777/cockpit
 B777DR_button_cover_positions             = deferred_dataref("Strato/777/cockpit/buttons/position", "array[10]")	-- DATAREF FOR BUTTON COVER ANIMATIONS
 
 --*************************************************************************************--
---**                              CUSTOM DATAREF HANDLERS                            **--
+--**                              X-PLANE COMMAND HANDLERS                           **--
 --*************************************************************************************--
 
 
@@ -68,10 +73,23 @@ B777DR_button_cover_positions             = deferred_dataref("Strato/777/cockpit
 
 B777CMD_ap_servos_on                      = find_command("sim/autopilot/servos_on")
 
+
+
 --*************************************************************************************--
---**                              X-PLANE COMMAND HANDLERS                           **--
+--**                                CUSTOM COMMAND HANDLERS                          **--
 --*************************************************************************************--
 
+function B777_ap_engage_switch_1_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_mcp_button_positions[1] = 1
+      B777CMD_ap_servos_on:once()
+      --might need some other stuff here too
+   elseif phase == 1 then
+      B777DR_mcp_button_positions[1] = 1
+   elseif phase == 2 then
+      B777DR_mcp_button_positions[1] = 0
+   end
+end
 
 
 --*************************************************************************************--
@@ -81,7 +99,7 @@ B777CMD_ap_servos_on                      = find_command("sim/autopilot/servos_o
 ---MCP----------
 
 B777CMD_mcp_ap_engage_1                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_1", "Engage A/P 1", B777_ap_engage_switch_1_CMDhandler)
-B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler) --might need a non switch one too
+--[[77CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler) --might need a non switch one too
 B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
 
 B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
@@ -178,21 +196,7 @@ B777CMD_fms_l_9                           = deferred_command("Strato/B777/button
 B777CMD_fms_l_0                           = deferred_command("Strato/B777/button_switch/fms_l/0", "0", B777_fms_l_0_CMDhandler)
 B777CMD_fms_l_period                      = deferred_command("Strato/B777/button_switch/fms_l/period", "period", B777_fms_l_period_CMDhandler)
 B777CMD_fms_l_plusminus                   = deferred_command("Strato/B777/button_switch/fms_l/plusminus", "+/- button", B777_fms_l_plusminus_CMDhandler)
-
---*************************************************************************************--
---**                                CUSTOM COMMAND HANDLERS                          **--
---*************************************************************************************--
-function B777_ap_engage_switch_1_CMDhandler(phase, duration)
-   if phase == 0 then
-      B777DR_mcp_button_positions[1] = 1
-      B777CMD_ap_servos_on:once()
-      --might need some other stuff here too
-   elseif phase == 1 then
-      B777DR_mcp_button_positions[1] = 1
-   elseif phase == 2 then
-      B777DR_mcp_button_positions[1] = 0
-   end
-end
+]]
 
 
 
