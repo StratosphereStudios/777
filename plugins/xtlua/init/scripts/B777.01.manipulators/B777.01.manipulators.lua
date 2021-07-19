@@ -28,7 +28,7 @@ end
 
 B777CMD_mcp_ap_engage_1                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_1", "Engage A/P 1", B777_ap_engage_switch_1_CMDhandler)
 B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler) --might need a non switch one too
-B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
+--[[B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
 
 B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
 B777CMD_mcp_flightdirector_fo             = deferred_command("Strato/B777/button_switch/mcp/fd/fo", "F/O Flight Director Switch", B777_fd_fo_CMDhandler)
@@ -38,7 +38,7 @@ B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button
 B777CMD_mcp_autothrottle_arm_1            = deferred_command("Strato/B777/autothrottle/arm_1", "Autothrottle Arm 1", B777_autothrottle_arm_1_CMDhandler)
 B777CMD_mcp_autothrottle_arm_2            = deferred_command("Strato/B777/autothrottle/arm_2", "Autothrottle Arm 2", B777_autothrottle_arm_2_CMDhandler)
 B777CMD_mcp_autothrottle_disarm_1         = deferred_command("Strato/B777/autothrottle/disarm_1", "Autothrottle Disarm 1", B777_autothrottle_disarm_1_CMDhandler)
-B777CMD_mcp_autothrottle_disarm_2         = deferred_command("Strato/B777/autothrottle/disarm_2", "Autothrottle Disarm 2", B777_autothrottle_disarm_2_CMDhandler)
+B777CMD_mcp_autothrottle_disarm_2         = deferred_command("Strato/B777/autothrottle/disarm_2", "Autothrottle Disarm 2", B777_autothrottle_disarm_2_CMDhandler)]]
 
 B777CMD_mcp_ap_loc                        = deferred_command("Strato/B777/button_switch/mcp/ap/loc", "Localizer A/P Mode", B777_ap_loc_switch_CMDhandler)
 B777CMD_mcp_ap_app                        = deferred_command("Strato/B777/button_switch/mcp/ap/app", "Approach A/P Mode", B777_ap_app_switch_CMDhandler)
@@ -52,7 +52,7 @@ B777CMD_mcp_ap_flch                       = deferred_command("Strato/B777/button
 
 ---FMS L----------
 
-B777CMD_fms_l_a                           = deferred_command("Strato/B777/button_switch/fms_l/a", "A", B777_fms_l_a_CMDhandler)
+--[[B777CMD_fms_l_a                           = deferred_command("Strato/B777/button_switch/fms_l/a", "A", B777_fms_l_a_CMDhandler)
 B777CMD_fms_l_b                           = deferred_command("Strato/B777/button_switch/fms_l/b", "B", B777_fms_l_b_CMDhandler)
 B777CMD_fms_l_c                           = deferred_command("Strato/B777/button_switch/fms_l/c", "C", B777_fms_l_c_CMDhandler)
 B777CMD_fms_l_d                           = deferred_command("Strato/B777/button_switch/fms_l/d", "D", B777_fms_l_d_CMDhandler)
@@ -123,7 +123,7 @@ B777CMD_fms_l_8                           = deferred_command("Strato/B777/button
 B777CMD_fms_l_9                           = deferred_command("Strato/B777/button_switch/fms_l/9", "9", B777_fms_l_9_CMDhandler)
 B777CMD_fms_l_0                           = deferred_command("Strato/B777/button_switch/fms_l/0", "0", B777_fms_l_0_CMDhandler)
 B777CMD_fms_l_period                      = deferred_command("Strato/B777/button_switch/fms_l/period", "period", B777_fms_l_period_CMDhandler)
-B777CMD_fms_l_plusminus                   = deferred_command("Strato/B777/button_switch/fms_l/plusminus", "+/- button", B777_fms_l_plusminus_CMDhandler)
+B777CMD_fms_l_plusminus                   = deferred_command("Strato/B777/button_switch/fms_l/plusminus", "+/- button", B777_fms_l_plusminus_CMDhandler)]]
 
 --*************************************************************************************--
 --**                             CREATE CUSTOM DATAREFS                              **--

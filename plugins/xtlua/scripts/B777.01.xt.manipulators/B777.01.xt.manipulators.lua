@@ -83,15 +83,13 @@ simCMD_ap_vs                             = find_command("sim/autopilot/vertical_
 simCMD_ap_lnav                           = find_command("sim/autopilot/FMS")
 simCMD_ap_vnav                           = find_command("sim/autopilot/vnav")
 
-
-
 --*************************************************************************************--
 --**                                CUSTOM COMMAND HANDLERS                          **--
 --*************************************************************************************--
 
 function B777_ap_engage_switch_1_CMDhandler(phase, duration)   -- A/P ENGAGE BUTTON L
    if phase == 0 then
-      B777DR_mcp_button_positions[2] = 1
+      B777DR_mcp_button_positions[1] = 1
       simCMD_ap_servos_on:once()
       -- might need some other stuff here as well
    elseif phase == 1 then
@@ -316,11 +314,6 @@ B777CMD_fms_l_0                           = deferred_command("Strato/B777/button
 B777CMD_fms_l_period                      = deferred_command("Strato/B777/button_switch/fms_l/period", "period", B777_fms_l_period_CMDhandler)
 B777CMD_fms_l_plusminus                   = deferred_command("Strato/B777/button_switch/fms_l/plusminus", "+/- button", B777_fms_l_plusminus_CMDhandler)
 ]]
-
-
-
-
-
 
 --*************************************************************************************--
 --**                                       CODE                                      **--
