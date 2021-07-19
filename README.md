@@ -48,4 +48,6 @@ If you're on Windows, you'll need to install [C++ support](https://www.microsoft
 
 [Crazytimtimtim](https://github.com/crazytimtimtim): Code, flight model, documenation, development management.
 
+[zeta976](https://github.com/zeta976): Modeling, airfoils, flight model, documentation, development management.
+
 Potatohead123: Landing gear, cockpit, engines.
