@@ -216,7 +216,7 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 0.0
 P _gear/0/_lonR 110.0
 P _gear/0/_scon 303177.593750000
-P _gear/0/_stat_def 0.389597505
+P _gear/0/_stat_def 0.389597595
 P _gear/0/_steerdeg_hispeed 7.0
 P _gear/0/_steerdeg_lospeed 70.0
 P _gear/0/_strut_comp 0.0
@@ -250,7 +250,7 @@ P _gear/1/_lonE -9.0
 P _gear/1/_lonN -9.0
 P _gear/1/_lonR 8.0
 P _gear/1/_scon 303177.593750000
-P _gear/1/_stat_def 1.086652637
+P _gear/1/_stat_def 1.086652756
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -284,7 +284,7 @@ P _gear/2/_lonE -9.0
 P _gear/2/_lonN -9.0
 P _gear/2/_lonR 8.0
 P _gear/2/_scon 303177.593750000
-P _gear/2/_stat_def 1.086652637
+P _gear/2/_stat_def 1.086652756
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -43249,7 +43249,7 @@ P acf/_bus_gen_is_on/6 1
 P acf/_bus_gen_is_on/7 1
 P acf/_bus_gen_is_on/count 8
 P acf/_buses_always_tied 0
-P acf/_bypass_ratio 10.0
+P acf/_bypass_ratio 9.0
 P acf/_callsign Boeing 77W
 P acf/_camera_fov_zoom 60.0
 P acf/_camera_offset_phi 0.0
@@ -44605,7 +44605,7 @@ P acf/_govnr_del 0.010000000
 P acf/_govnr_dot 0.010000000
 P acf/_green_hi_CHT 280.0
 P acf/_green_hi_EGT 0.0
-P acf/_green_hi_EPR 2.0
+P acf/_green_hi_EPR 4.0
 P acf/_green_hi_FF 9999.0
 P acf/_green_hi_ITT 544.0
 P acf/_green_hi_MP 29.899999619
@@ -44626,7 +44626,7 @@ P acf/_green_hi_xmsn_P 0.0
 P acf/_green_hi_xmsn_T 0.0
 P acf/_green_lo_CHT 140.0
 P acf/_green_lo_EGT 0.0
-P acf/_green_lo_EPR 0.0
+P acf/_green_lo_EPR 2.0
 P acf/_green_lo_FF 7730.0
 P acf/_green_lo_ITT 272.0
 P acf/_green_lo_MP 14.949999809
@@ -44960,7 +44960,7 @@ P acf/_radiator_in_propwash 0
 P acf/_radio_alt_callout_advance 80.0
 P acf/_red_hi_CHT 350.0
 P acf/_red_hi_EGT 1922.0
-P acf/_red_hi_EPR 2.0
+P acf/_red_hi_EPR 4.199999809
 P acf/_red_hi_FF 9999.0
 P acf/_red_hi_ITT 1180.0
 P acf/_red_hi_MP 29.899999619
