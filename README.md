@@ -45,7 +45,7 @@ If you're on Windows, you'll need to install [C++ support](https://www.microsoft
 
 [Matt726](https://github.com/Matt726-S): Sounds, Documentation, Development Management.
 
-[Crazytimtimtim](https://github.com/crazytimtimtim): Code, flight model, some documenation, development management.
+[Crazytimtimtim](https://github.com/crazytimtimtim): Code, flight model, documenation, development management.
 
 [zeta976](https://github.com/zeta976): Modeling, Airfoils, Flight model, documentation, development management.
 
