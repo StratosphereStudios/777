@@ -257,8 +257,29 @@ function B777_fd_fo_CMDhandler(phase, duration)              -- F/O F/D SWITCH
    end
 end
 
--- A/T SWITCHES GO HERE
+function B777_autothrottle_switch_1_CMDhandler()
+   if phase == 1 then
+      if B777DR_mcp_button_positions[15] == 0 then
+         
+      elseif  B777DR_mcp_button_positions[15] == 1 then
+         
+      end
+      B777DR_mcp_button_positions[15] = 1 - B777DR_mcp_button_positions[15]
+      B777DR_mcp_button_positions[16] = B777DR_mcp_button_positions[15]
+   end
+end
 
+function B777_autothrottle_switch_2_CMDhandler()
+   if phase == 1 then
+      if B777DR_mcp_button_positions[16] == 0 then
+         
+      elseif  B777DR_mcp_button_positions[16] == 1 then
+         
+      end
+      B777DR_mcp_button_positions[16] = 1 - B777DR_mcp_button_positions[16]
+      B777DR_mcp_button_positions[15] = B777DR_mcp_button_positions[16]
+   end
+end
 
 ---EFIS----------
 
@@ -315,12 +336,8 @@ B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button
 B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
 B777CMD_mcp_flightdirector_fo             = deferred_command("Strato/B777/button_switch/mcp/fd/fo", "F/O Flight Director Switch", B777_fd_fo_CMDhandler)
 
---[[B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_1_CMDhandler)
+B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_1_CMDhandler)
 B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
-B777CMD_mcp_autothrottle_arm_1            = deferred_command("Strato/B777/autothrottle/arm_1", "Autothrottle Arm 1", B777_autothrottle_arm_1_CMDhandler)
-B777CMD_mcp_autothrottle_arm_2            = deferred_command("Strato/B777/autothrottle/arm_2", "Autothrottle Arm 2", B777_autothrottle_arm_2_CMDhandler)
-B777CMD_mcp_autothrottle_disarm_1         = deferred_command("Strato/B777/autothrottle/disarm_1", "Autothrottle Disarm 1", B777_autothrottle_disarm_1_CMDhandler)
-B777CMD_mcp_autothrottle_disarm_2         = deferred_command("Strato/B777/autothrottle/disarm_2", "Autothrottle Disarm 2", B777_autothrottle_disarm_2_CMDhandler)]]
 
 B777CMD_mcp_ap_loc                        = deferred_command("Strato/B777/button_switch/mcp/ap/loc", "Localizer A/P Mode", B777_ap_loc_switch_CMDhandler)
 B777CMD_mcp_ap_app                        = deferred_command("Strato/B777/button_switch/mcp/ap/app", "Approach A/P Mode", B777_ap_app_switch_CMDhandler)
