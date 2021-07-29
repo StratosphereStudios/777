@@ -23,7 +23,7 @@ function deferred_dataref(name,type,notifier)
 end
 
 --*************************************************************************************--
---**                             CREATE CUSTOM COMMANDS                              **--
+--**                              CREATE CUSTOM COMMANDS                             **--
 --*************************************************************************************--
 
 ---MCP----------
@@ -62,16 +62,35 @@ B777CMD_efis_baro_std_button              = deferred_command("Strato/B777/button
 
 --FORWARD-----
 
+--[[LIGHT SWITCHES USE THEIR RESPECTIVE DEFAULT DATAREFS:
+sim/cockpit2/switches/taxi_light_on
+sim/cockpit2/switches/landing_lights_switch
+sim/cockpit2/switches/strobe_lights_on
+sim/cockpit2/switches/navigation_lights_on
+sim/cockpit2/switches/beacon_on
+]]
+
 --CENTER-----
+
+B777CMD_ovhd_c_batt_button                = deferred_command("Strato/B777/button_switch/ovhd_c/batt", "Battery Switch", B777_ovhd_c_batt_switch_CMDhandler)
+B777CMD_ovhd_c_apu_gen_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "APU Generator Switch", B777_ovhd_c_apu_gen_switch_CMDhandler)
+B777CMD_ovhd_c_bus_tie_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Bus Tie Switch", B777_ovhd_c_bus_tie_l_switch_CMDhandler)
+B777CMD_ovhd_c_bus_tie_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Bus Tie Switch", B777_ovhd_c_bus_tie_r_switch_CMDhandler)
+B777CMD_ovhd_c_eng_gen_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Engine Generator Switch", B777_ovhd_c_eng_gen_l_switch_CMDhandler)
+B777CMD_ovhd_c_eng_gen_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Engine Generator Switch", B777_ovhd_c_eng_gen_r_switch_CMDhandler)
+B777CMD_ovhd_c_ext_pwr_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "External Power Switch", B777_ovhd_c_ext_pwr_switch_CMDhandler)
+--RAM AIR TURBINE USES DEFAULT DATAREF: sim/cockpit2/switches/ram_air_turbine_on
 
 --AFT-----
 
 
 ---MAIN PANEL----------
 
+--GEAR LEVER USES DEFAULT DATAREF: sim/cockpit/switches/gear_handle_status
+
 
 --*************************************************************************************--
---**                             CREATE CUSTOM DATAREFS                              **--
+--**                              CREATE CUSTOM DATAREFS                             **--
 --*************************************************************************************--
 
 B777DR_mcp_button_positions               = deferred_dataref("Strato/777/cockpit/mcp/buttons/position", "array[25]")

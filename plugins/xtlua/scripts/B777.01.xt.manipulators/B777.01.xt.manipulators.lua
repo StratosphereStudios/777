@@ -3,8 +3,15 @@
 * Program Script Name: manipulators
 * Author Name: crazytimtimtim
 * Script Description: functions for cockpit switches
+* Notes: 1. Information on default datarefs for some switched provided.
+         2. Can't find probe/window heat switches, might always be on? If so will command them on on aircraft load.
+         3. Need to figure out number of buses to do bus cross-ties.
+         4. Need to know a bit more about different types of manipulators in X-Plane2Blender
+         5. Need to figure out how to code knobs and dials
 *****************************************************************************************
 --]]
+
+--TODO: Figure out knobs/dials
 
 --replace create_command
 function deferred_command(name,desc,realFunc)
@@ -18,7 +25,6 @@ function deferred_dataref(name,nilType,callFunction)
     end
     return find_dataref(name)
 end
-
 
 --*************************************************************************************--
 --**                            XTLUA GLOBAL VARIABLES                               **--
@@ -36,7 +42,6 @@ IN_REPLAY - evaluates to 0 if replay is off, 1 if replay mode is on
 --*************************************************************************************--
 --**                                 CREATE VARIABLES                                **--
 --*************************************************************************************--
-
 
 
 --*************************************************************************************--
@@ -97,6 +102,30 @@ simCMD_fd_fo_off                         = find_command("sim/autopilot/servos_fd
 simCMD_efis_wxr                          = find_command("sim/instruments/EFIS_wxr")
 simCMD_efis_tfc                          = find_command("sim/instruments/EFIS_tcas")
 simCMD_efis_baro_rst                     = find_command("sim/instruments/barometer_2992")
+
+
+---OVERHEAD----------
+
+--Forward-----
+
+
+--Center-----
+
+simCMD_ovhd_bat_toggle                  = find_command("sim/electrical/batteries_toggle")
+simCMD_ovhd_apu_gen_on                  = find_command("sim/electrical/APU_generator_on")
+simCMD_ovhd_apu_gen_off                 = find_command("sim/electrical/APU_generator_off")
+simCMD_ovhd_gen_1_on                    = find_command("sim/electrical/generator_1_on")
+simCMD_ovhd_gen_1_off                   = find_command("sim/electrical/generator_1_off")
+simCMD_ovhd_gen_2_on                    = find_command("sim/electrical/generator_2_on")
+simCMD_ovhd_gen_2_off                   = find_command("sim/electrical/generator_2_off")
+simCMD_ovhd_gpu_on                      = find_command("sim/electrical/GPU_on")
+simCMD_ovhd_gpu_off                     = find_command("sim/electrical/GPU_off")
+
+--Aft-----
+
+
+---MISC----------
+
 
 --*************************************************************************************--
 --**                                CUSTOM COMMAND HANDLERS                          **--
@@ -198,9 +227,9 @@ function B777_ap_lnav_switch_CMDhandler(phase, duration)       -- A/P LNAV BUTTO
       B777DR_mcp_button_positions[9] = 1
       simCMD_ap_lnav:once()
    elseif phase == 1 then
-         B777DR_mcp_button_positions[9] = 1
+      B777DR_mcp_button_positions[9] = 1
    elseif phase == 2 then
-         B777DR_mcp_button_positions[9] = 0
+      B777DR_mcp_button_positions[9] = 0
    end
 end
 
@@ -215,7 +244,7 @@ function B777_ap_vnav_switch_CMDhandler(phase, duration)       -- A/P  VNAV BUTT
    end
 end
 
-function B777_ap_flch_switch_CMDhandler(phase, duration)    -- A/P FLCH (LEVEL CHANGE) BUTTON
+function B777_ap_flch_switch_CMDhandler(phase, duration)       -- A/P FLCH (LEVEL CHANGE) BUTTON
    if phase == 0 then
       B777DR_mcp_button_positions[11] = 1
       simCMD_ap_flch:once()
@@ -235,7 +264,7 @@ function B777_ap_disengage_switch_CMDhandler(phase, duration)  -- A/P DISENGAGE 
    end
 end
 
-function B777_fd_capt_CMDhandler(phase, duration)            -- CAPTAIN F/D SWITCH
+function B777_fd_capt_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
    if phase == 1 then
       if B777DR_mcp_button_positions[13] == 0 then
          simCMD_fd_capt_on:once()
@@ -246,7 +275,7 @@ function B777_fd_capt_CMDhandler(phase, duration)            -- CAPTAIN F/D SWIT
    end
 end
 
-function B777_fd_fo_CMDhandler(phase, duration)              -- F/O F/D SWITCH
+function B777_fd_fo_CMDhandler(phase, duration)               -- F/O F/D SWITCH
    if phase == 1 then
       if B777DR_mcp_button_positions[14] == 0 then
          simCMD_fd_fo_on:once()
@@ -257,27 +286,13 @@ function B777_fd_fo_CMDhandler(phase, duration)              -- F/O F/D SWITCH
    end
 end
 
-function B777_autothrottle_switch_1_CMDhandler()
+function B777_autothrottle_switch_CMDhandler()
    if phase == 1 then
       if B777DR_mcp_button_positions[15] == 0 then
-         
+         B777DR_mcp_button_positions[15] = 1
       elseif  B777DR_mcp_button_positions[15] == 1 then
-         
+         B777DR_mcp_button_positions[15] = 0
       end
-      B777DR_mcp_button_positions[15] = 1 - B777DR_mcp_button_positions[15]
-      B777DR_mcp_button_positions[16] = B777DR_mcp_button_positions[15]
-   end
-end
-
-function B777_autothrottle_switch_2_CMDhandler()
-   if phase == 1 then
-      if B777DR_mcp_button_positions[16] == 0 then
-         
-      elseif  B777DR_mcp_button_positions[16] == 1 then
-         
-      end
-      B777DR_mcp_button_positions[16] = 1 - B777DR_mcp_button_positions[16]
-      B777DR_mcp_button_positions[15] = B777DR_mcp_button_positions[16]
    end
 end
 
@@ -293,6 +308,8 @@ function B777_efis_wxr_switch_CMDhandler(phase, duration)
       B777DR_efis_button_positions[1] = 0
    end
 end
+
+--TODO: GET THESE DONE, ALONG WITH AUTOTHROTTLE
 
 function B777_efis_sta_switch_CMDhandler(phase, duration)
 end
@@ -322,6 +339,94 @@ function B777_efis_baro_std_switch_CMDhandler(phase, duration)
    end
 end
 
+---OVERHEAD----------
+
+
+--Forward-----
+
+
+--Center-----
+
+function B777_ovhd_c_batt_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_ovhd_ctr_button_positions[1] = 1 - B777DR_ovhd_ctr_button_positions[1]
+      simCMD_ovhd_bat_toggle:once()
+   end
+end
+
+function B777_ovhd_c_apu_gen_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[2] == 0 then
+         simCMD_ovhd_apu_gen_on:once()
+         B777DR_ovhd_ctr_button_positions[2] = 1
+      elseif B777DR_ovhd_ctr_button_positions[2] == 1 then
+         simCMD_ovhd_apu_gen_off:once()
+         B777DR_ovhd_ctr_button_positions[2] = 0
+      end
+   end
+end
+
+--TODO: FIX BUS TIES
+
+function B777_ovhd_c_bus_tie_l_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[3] == 0 then
+         B777DR_ovhd_ctr_button_positions[3] = 1
+      elseif B777DR_ovhd_ctr_button_positions[3] == 1 then
+         B777DR_ovhd_ctr_button_positions[3] = 0
+      end
+   end
+end
+
+function B777_ovhd_c_bus_tie_r_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[4] == 0 then
+         B777DR_ovhd_ctr_button_positions[4] = 1
+      elseif B777DR_ovhd_ctr_button_positions[4] == 1 then
+         B777DR_ovhd_ctr_button_positions[4] = 0
+      end
+   end
+end
+
+
+function B777_ovhd_c_eng_gen_l_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[5] == 0 then
+         simCMD_ovhd_gen_1_on:once()
+         B777DR_ovhd_ctr_button_positions[5] = 1
+      elseif B777DR_ovhd_ctr_button_positions[5] == 1 then
+         simCMD_ovhd_gen_1_off:once()
+         B777DR_ovhd_ctr_button_positions[5] = 0
+      end
+   end
+end
+
+function B777_ovhd_c_eng_gen_r_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[6] == 0 then
+         simCMD_ovhd_gen_2_on:once()
+         B777DR_ovhd_ctr_button_positions[6] = 1
+      elseif B777DR_ovhd_ctr_button_positions[6] == 1 then
+         simCMD_ovhd_gen_2_off:once()
+         B777DR_ovhd_ctr_button_positions[6] = 0
+      end
+   end
+end
+
+function B777_ovhd_c_ext_pwr_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[7] == 0 then
+         simCMD_ovhd_gpu_on:once()
+         B777DR_ovhd_ctr_button_positions[7] = 1
+      elseif B777DR_ovhd_ctr_button_positions[7] == 1 then
+         simCMD_ovhd_gpu_off:once()
+         B777DR_ovhd_ctr_button_positions[7] = 0
+      end
+   end
+end
+
+--Aft-----
+
 
 --*************************************************************************************--
 --**                              CREATE CUSTOM COMMANDS                             **--
@@ -330,14 +435,14 @@ end
 ---MCP----------
 
 B777CMD_mcp_ap_engage_1                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_1", "Engage A/P 1", B777_ap_engage_switch_1_CMDhandler)
-B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler) --might need a non switch one too
+B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler)
 B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
 
 B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
 B777CMD_mcp_flightdirector_fo             = deferred_command("Strato/B777/button_switch/mcp/fd/fo", "F/O Flight Director Switch", B777_fd_fo_CMDhandler)
 
-B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_1_CMDhandler)
-B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
+B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
+--B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
 
 B777CMD_mcp_ap_loc                        = deferred_command("Strato/B777/button_switch/mcp/ap/loc", "Localizer A/P Mode", B777_ap_loc_switch_CMDhandler)
 B777CMD_mcp_ap_app                        = deferred_command("Strato/B777/button_switch/mcp/ap/app", "Approach A/P Mode", B777_ap_app_switch_CMDhandler)
@@ -363,13 +468,34 @@ B777CMD_efis_baro_std_button              = deferred_command("Strato/B777/button
 
 --FORWARD-----
 
+--[[LIGHT SWITCHES USE THEIR RESPECTIVE DEFAULT DATAREFS:
+
+sim/cockpit2/switches/taxi_light_on
+sim/cockpit2/switches/landing_lights_switch
+sim/cockpit2/switches/strobe_lights_on
+sim/cockpit2/switches/navigation_lights_on
+sim/cockpit2/switches/beacon_on
+
+]]
+
 --CENTER-----
+
+B777CMD_ovhd_c_batt_button                = deferred_command("Strato/B777/button_switch/ovhd_c/batt", "Battery Switch", B777_ovhd_c_batt_switch_CMDhandler)
+B777CMD_ovhd_c_apu_gen_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "APU Generator Switch", B777_ovhd_c_apu_gen_switch_CMDhandler)
+B777CMD_ovhd_c_bus_tie_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Bus Tie Switch", B777_ovhd_c_bus_tie_l_switch_CMDhandler)
+B777CMD_ovhd_c_bus_tie_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Bus Tie Switch", B777_ovhd_c_bus_tie_r_switch_CMDhandler)
+B777CMD_ovhd_c_eng_gen_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Engine Generator Switch", B777_ovhd_c_eng_gen_l_switch_CMDhandler)
+B777CMD_ovhd_c_eng_gen_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Engine Generator Switch", B777_ovhd_c_eng_gen_r_switch_CMDhandler)
+B777CMD_ovhd_c_ext_pwr_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "External Power Switch", B777_ovhd_c_ext_pwr_switch_CMDhandler)
+
+-- RAM AIR TURBINE USES DEFAULT DATAREF: sim/cockpit2/switches/ram_air_turbine_on
 
 --AFT-----
 
 
 ---MAIN PANEL----------
 
+--GEAR LEVER USES DEFAULT DATAREF: sim/cockpit/switches/gear_handle_status
 
 --*************************************************************************************--
 --**                                       CODE                                      **--
