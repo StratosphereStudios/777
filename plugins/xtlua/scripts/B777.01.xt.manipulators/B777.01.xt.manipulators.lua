@@ -3,8 +3,15 @@
 * Program Script Name: manipulators
 * Author Name: crazytimtimtim
 * Script Description: functions for cockpit switches
+* Notes: 1. Information on default datarefs for some switched provided.
+         2. Can't find probe/window heat switches, might always be on? If so will command them on on aircraft load.
+         3. Need to figure out number of buses to do bus cross-ties.
+         4. Need to know a bit more about different types of manipulators in X-Plane2Blender
+         5. Need to figure out how to code knobs and dials
 *****************************************************************************************
 --]]
+
+--TODO: Figure out knobs/dials
 
 --replace create_command
 function deferred_command(name,desc,realFunc)
@@ -18,7 +25,6 @@ function deferred_dataref(name,nilType,callFunction)
     end
     return find_dataref(name)
 end
-
 
 --*************************************************************************************--
 --**                            XTLUA GLOBAL VARIABLES                               **--
@@ -38,7 +44,6 @@ IN_REPLAY - evaluates to 0 if replay is off, 1 if replay mode is on
 --*************************************************************************************--
 
 
-
 --*************************************************************************************--
 --**                               FIND X-PLANE DATAREFS                             **--
 --*************************************************************************************--
@@ -55,12 +60,17 @@ IN_REPLAY - evaluates to 0 if replay is off, 1 if replay mode is on
 --**                              CREATE CUSTOM DATAREFS                             **--
 --*************************************************************************************--
 
-B777DR_mcp_button_positions               = deferred_dataref("Strato/777/cockpit/mcp/buttons/position", "array[25]")	-- DATAREF FOR MCP BUTTON ANIMATIONS
-B777DR_fms_l_button_positions_letters     = deferred_dataref("Strato/777/cockpit/fms_l/buttons/letters/position", "array[30]")	-- DATAREF FOR FMS L BUTTON ANIMATIONS
-B777DR_fms_l_button_positions_lsk         = deferred_dataref("Strato/777/cockpit/fms_l/buttons/lsk/position", "array[12]")
-B777DR_fms_l_button_positions             = deferred_dataref("Strato/777/cockpit/fms_l/buttons/position", "array[15]")
-B777DR_fms_l_button_positions_numbers     = deferred_dataref("Strato/777/cockpit/fms_l/buttons/position/numbers", "array[12]")
-B777DR_button_cover_positions             = deferred_dataref("Strato/777/cockpit/buttons/position", "array[10]")	-- DATAREF FOR BUTTON COVER ANIMATIONS
+B777DR_mcp_button_positions               = deferred_dataref("Strato/777/cockpit/mcp/buttons/position", "array[25]")
+
+B777DR_efis_button_positions              = deferred_dataref("Strato/777/cockpit/efis/buttons/position", "array[10]")
+
+B777DR_ovhd_fwd_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/fwd/buttons/position", "array[20]")
+B777DR_ovhd_ctr_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/ctr/buttons/position", "array[20]")
+B777DR_ovhd_aft_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/aft/buttons/position", "array[20]")
+
+B777DR_main_pnl_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/main_pnl/buttons/position", "array[20]")
+
+B777DR_button_cover_positions             = deferred_dataref("Strato/777/cockpit/buttons/position", "array[18]")
 
 --*************************************************************************************--
 --**                              X-PLANE COMMAND HANDLERS                           **--
@@ -72,20 +82,56 @@ B777DR_button_cover_positions             = deferred_dataref("Strato/777/cockpit
 --**                               FIND X-PLANE COMMANDS                            **--
 --*************************************************************************************--
 
+---MCP----------
 simCMD_ap_servos_on                      = find_command("sim/autopilot/servos_on")
 simCMD_ap_servos_on_2                    = find_command("sim/autopilot/servos2_on")
 simCMD_ap_approach                       = find_command("sim/autopilot/approach")
-
 simCMD_ap_hdgHold                        = find_command("sim/autopilot/heading_hold")
 simCMD_ap_altArm                         = find_command("sim/autopilot/altitude_arm")
 simCMD_ap_flch                           = find_command("sim/autopilot/level_change")
 simCMD_ap_vs                             = find_command("sim/autopilot/vertical_speed")
 simCMD_ap_lnav                           = find_command("sim/autopilot/FMS")
 simCMD_ap_vnav                           = find_command("sim/autopilot/vnav")
+simCMD_ap_disco                          = find_command("sim/autopilot/disconnect")
+simCMD_fd_capt_on                        = find_command("sim/autopilot/fdir_on")
+simCMD_fd_capt_off                       = find_command("sim/autopilot/servos_fdir_off")
+simCMD_fd_fo_on                          = find_command("sim/autopilot/fdir2_on")
+simCMD_fd_fo_off                         = find_command("sim/autopilot/servos_fdir2_off")
+
+---EFIS----------
+simCMD_efis_wxr                          = find_command("sim/instruments/EFIS_wxr")
+simCMD_efis_tfc                          = find_command("sim/instruments/EFIS_tcas")
+simCMD_efis_baro_rst                     = find_command("sim/instruments/barometer_2992")
+
+
+---OVERHEAD----------
+
+--Forward-----
+
+
+--Center-----
+
+simCMD_ovhd_bat_toggle                  = find_command("sim/electrical/batteries_toggle")
+simCMD_ovhd_apu_gen_on                  = find_command("sim/electrical/APU_generator_on")
+simCMD_ovhd_apu_gen_off                 = find_command("sim/electrical/APU_generator_off")
+simCMD_ovhd_gen_1_on                    = find_command("sim/electrical/generator_1_on")
+simCMD_ovhd_gen_1_off                   = find_command("sim/electrical/generator_1_off")
+simCMD_ovhd_gen_2_on                    = find_command("sim/electrical/generator_2_on")
+simCMD_ovhd_gen_2_off                   = find_command("sim/electrical/generator_2_off")
+simCMD_ovhd_gpu_on                      = find_command("sim/electrical/GPU_on")
+simCMD_ovhd_gpu_off                     = find_command("sim/electrical/GPU_off")
+
+--Aft-----
+
+
+---MISC----------
+
 
 --*************************************************************************************--
 --**                                CUSTOM COMMAND HANDLERS                          **--
 --*************************************************************************************--
+
+---MCP----------
 
 function B777_ap_engage_switch_1_CMDhandler(phase, duration)   -- A/P ENGAGE BUTTON L
    if phase == 0 then
@@ -181,9 +227,9 @@ function B777_ap_lnav_switch_CMDhandler(phase, duration)       -- A/P LNAV BUTTO
       B777DR_mcp_button_positions[9] = 1
       simCMD_ap_lnav:once()
    elseif phase == 1 then
-         B777DR_mcp_button_positions[9] = 1
+      B777DR_mcp_button_positions[9] = 1
    elseif phase == 2 then
-         B777DR_mcp_button_positions[9] = 0
+      B777DR_mcp_button_positions[9] = 0
    end
 end
 
@@ -198,16 +244,189 @@ function B777_ap_vnav_switch_CMDhandler(phase, duration)       -- A/P  VNAV BUTT
    end
 end
 
-function B777_ap_flch_switch_CMDhandler(phase, duration)    -- A/P FLCH (LEVEL CHANGE) BUTTON
+function B777_ap_flch_switch_CMDhandler(phase, duration)       -- A/P FLCH (LEVEL CHANGE) BUTTON
    if phase == 0 then
       B777DR_mcp_button_positions[11] = 1
       simCMD_ap_flch:once()
    elseif phase == 1 then
-      B777DR_mcp_button_positions[12] = 1
+      B777DR_mcp_button_positions[11] = 1
    elseif phase == 2 then
-      B777DR_mcp_button_positions[12] = 0
+      B777DR_mcp_button_positions[11] = 0
    end
 end
+
+function B777_ap_disengage_switch_CMDhandler(phase, duration)  -- A/P DISENGAGE BAR
+   if phase == 0 then
+      if B777DR_mcp_button_positions[12] == 0 then
+         simCMD_ap_disco:once()
+      end
+      B777DR_mcp_button_positions[12] = 1 - B777DR_mcp_button_positions[12]
+   end
+end
+
+function B777_fd_capt_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+   if phase == 1 then
+      if B777DR_mcp_button_positions[13] == 0 then
+         simCMD_fd_capt_on:once()
+      elseif  B777DR_mcp_button_positions[13] == 1 then
+         simCMD_fd_capt_off:once()
+      end
+      B777DR_mcp_button_positions[13] = 1 - B777DR_mcp_button_positions[13]
+   end
+end
+
+function B777_fd_fo_CMDhandler(phase, duration)               -- F/O F/D SWITCH
+   if phase == 1 then
+      if B777DR_mcp_button_positions[14] == 0 then
+         simCMD_fd_fo_on:once()
+      elseif  B777DR_mcp_button_positions[14] == 1 then
+         simCMD_fd_fo_off:once()
+      end
+      B777DR_mcp_button_positions[14] = 1 - B777DR_mcp_button_positions[14]
+   end
+end
+
+function B777_autothrottle_switch_CMDhandler()
+   if phase == 1 then
+      if B777DR_mcp_button_positions[15] == 0 then
+         B777DR_mcp_button_positions[15] = 1
+      elseif  B777DR_mcp_button_positions[15] == 1 then
+         B777DR_mcp_button_positions[15] = 0
+      end
+   end
+end
+
+---EFIS----------
+
+function B777_efis_wxr_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_efis_button_positions[1] = 1
+      simCMD_efis_wxr:once()
+   elseif phase == 1 then
+      B777DR_efis_button_positions[1] = 1
+   elseif phase == 2 then
+      B777DR_efis_button_positions[1] = 0
+   end
+end
+
+--TODO: GET THESE DONE, ALONG WITH AUTOTHROTTLE
+
+function B777_efis_sta_switch_CMDhandler(phase, duration)
+end
+
+function B777_efis_wpt_switch_CMDhandler(phase, duration)
+end
+
+function B777_efis_tfc_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_efis_button_positions[4] = 1
+      simCMD_EFIS_tcas:once()
+   elseif phase == 1 then
+      B777DR_efis_button_positions[4] = 1
+   elseif phase == 2 then
+      B777DR_efis_button_positions[4] = 0
+   end
+end
+
+function B777_efis_baro_std_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_efis_button_positions[5] = 1
+      simCMD_efis_baro_rst:once()
+   elseif phase == 1 then
+      B777DR_efis_button_positions[5] = 1
+   elseif phase == 2 then
+      B777DR_efis_button_positions[5] = 0
+   end
+end
+
+---OVERHEAD----------
+
+
+--Forward-----
+
+
+--Center-----
+
+function B777_ovhd_c_batt_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_ovhd_ctr_button_positions[1] = 1 - B777DR_ovhd_ctr_button_positions[1]
+      simCMD_ovhd_bat_toggle:once()
+   end
+end
+
+function B777_ovhd_c_apu_gen_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[2] == 0 then
+         simCMD_ovhd_apu_gen_on:once()
+         B777DR_ovhd_ctr_button_positions[2] = 1
+      elseif B777DR_ovhd_ctr_button_positions[2] == 1 then
+         simCMD_ovhd_apu_gen_off:once()
+         B777DR_ovhd_ctr_button_positions[2] = 0
+      end
+   end
+end
+
+--TODO: FIX BUS TIES
+
+function B777_ovhd_c_bus_tie_l_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[3] == 0 then
+         B777DR_ovhd_ctr_button_positions[3] = 1
+      elseif B777DR_ovhd_ctr_button_positions[3] == 1 then
+         B777DR_ovhd_ctr_button_positions[3] = 0
+      end
+   end
+end
+
+function B777_ovhd_c_bus_tie_r_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[4] == 0 then
+         B777DR_ovhd_ctr_button_positions[4] = 1
+      elseif B777DR_ovhd_ctr_button_positions[4] == 1 then
+         B777DR_ovhd_ctr_button_positions[4] = 0
+      end
+   end
+end
+
+
+function B777_ovhd_c_eng_gen_l_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[5] == 0 then
+         simCMD_ovhd_gen_1_on:once()
+         B777DR_ovhd_ctr_button_positions[5] = 1
+      elseif B777DR_ovhd_ctr_button_positions[5] == 1 then
+         simCMD_ovhd_gen_1_off:once()
+         B777DR_ovhd_ctr_button_positions[5] = 0
+      end
+   end
+end
+
+function B777_ovhd_c_eng_gen_r_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[6] == 0 then
+         simCMD_ovhd_gen_2_on:once()
+         B777DR_ovhd_ctr_button_positions[6] = 1
+      elseif B777DR_ovhd_ctr_button_positions[6] == 1 then
+         simCMD_ovhd_gen_2_off:once()
+         B777DR_ovhd_ctr_button_positions[6] = 0
+      end
+   end
+end
+
+function B777_ovhd_c_ext_pwr_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_ovhd_ctr_button_positions[7] == 0 then
+         simCMD_ovhd_gpu_on:once()
+         B777DR_ovhd_ctr_button_positions[7] = 1
+      elseif B777DR_ovhd_ctr_button_positions[7] == 1 then
+         simCMD_ovhd_gpu_off:once()
+         B777DR_ovhd_ctr_button_positions[7] = 0
+      end
+   end
+end
+
+--Aft-----
+
 
 --*************************************************************************************--
 --**                              CREATE CUSTOM COMMANDS                             **--
@@ -216,18 +435,14 @@ end
 ---MCP----------
 
 B777CMD_mcp_ap_engage_1                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_1", "Engage A/P 1", B777_ap_engage_switch_1_CMDhandler)
-B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler) --might need a non switch one too
---[[B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
+B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler)
+B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
 
 B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
 B777CMD_mcp_flightdirector_fo             = deferred_command("Strato/B777/button_switch/mcp/fd/fo", "F/O Flight Director Switch", B777_fd_fo_CMDhandler)
 
-B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_1_CMDhandler)
-B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
-B777CMD_mcp_autothrottle_arm_1            = deferred_command("Strato/B777/autothrottle/arm_1", "Autothrottle Arm 1", B777_autothrottle_arm_1_CMDhandler)
-B777CMD_mcp_autothrottle_arm_2            = deferred_command("Strato/B777/autothrottle/arm_2", "Autothrottle Arm 2", B777_autothrottle_arm_2_CMDhandler)
-B777CMD_mcp_autothrottle_disarm_1         = deferred_command("Strato/B777/autothrottle/disarm_1", "Autothrottle Disarm 1", B777_autothrottle_disarm_1_CMDhandler)
-B777CMD_mcp_autothrottle_disarm_2         = deferred_command("Strato/B777/autothrottle/disarm_2", "Autothrottle Disarm 2", B777_autothrottle_disarm_2_CMDhandler)]]
+B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
+--B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
 
 B777CMD_mcp_ap_loc                        = deferred_command("Strato/B777/button_switch/mcp/ap/loc", "Localizer A/P Mode", B777_ap_loc_switch_CMDhandler)
 B777CMD_mcp_ap_app                        = deferred_command("Strato/B777/button_switch/mcp/ap/app", "Approach A/P Mode", B777_ap_app_switch_CMDhandler)
@@ -239,88 +454,66 @@ B777CMD_mcp_ap_lnav                       = deferred_command("Strato/B777/button
 B777CMD_mcp_ap_vnav                       = deferred_command("Strato/B777/button_switch/mcp/ap/vnav", "VNAV A/P Mode", B777_ap_vnav_switch_CMDhandler)
 B777CMD_mcp_ap_flch                       = deferred_command("Strato/B777/button_switch/mcp/ap/flch", "FLCH A/P Mode", B777_ap_flch_switch_CMDhandler)
 
----FMS L----------
 
---[[B777CMD_fms_l_a                           = deferred_command("Strato/B777/button_switch/fms_l/a", "A", B777_fms_l_a_CMDhandler)
-B777CMD_fms_l_b                           = deferred_command("Strato/B777/button_switch/fms_l/b", "B", B777_fms_l_b_CMDhandler)
-B777CMD_fms_l_c                           = deferred_command("Strato/B777/button_switch/fms_l/c", "C", B777_fms_l_c_CMDhandler)
-B777CMD_fms_l_d                           = deferred_command("Strato/B777/button_switch/fms_l/d", "D", B777_fms_l_d_CMDhandler)
-B777CMD_fms_l_e                           = deferred_command("Strato/B777/button_switch/fms_l/e", "E", B777_fms_l_e_CMDhandler)
-B777CMD_fms_l_f                           = deferred_command("Strato/B777/button_switch/fms_l/f", "F", B777_fms_l_f_CMDhandler)
-B777CMD_fms_l_g                           = deferred_command("Strato/B777/button_switch/fms_l/g", "G", B777_fms_l_g_CMDhandler)
-B777CMD_fms_l_h                           = deferred_command("Strato/B777/button_switch/fms_l/h", "H", B777_fms_l_h_CMDhandler)
-B777CMD_fms_l_i                           = deferred_command("Strato/B777/button_switch/fms_l/i", "I", B777_fms_l_i_CMDhandler)
-B777CMD_fms_l_j                           = deferred_command("Strato/B777/button_switch/fms_l/j", "J", B777_fms_l_j_CMDhandler)
-B777CMD_fms_l_k                           = deferred_command("Strato/B777/button_switch/fms_l/k", "K", B777_fms_l_k_CMDhandler)
-B777CMD_fms_l_l                           = deferred_command("Strato/B777/button_switch/fms_l/l", "L", B777_fms_l_l_CMDhandler)
-B777CMD_fms_l_m                           = deferred_command("Strato/B777/button_switch/fms_l/m", "M", B777_fms_l_m_CMDhandler)
-B777CMD_fms_l_n                           = deferred_command("Strato/B777/button_switch/fms_l/n", "N", B777_fms_l_n_CMDhandler)
-B777CMD_fms_l_o                           = deferred_command("Strato/B777/button_switch/fms_l/o", "O", B777_fms_l_o_CMDhandler)
-B777CMD_fms_l_p                           = deferred_command("Strato/B777/button_switch/fms_l/p", "P", B777_fms_l_p_CMDhandler)
-B777CMD_fms_l_q                           = deferred_command("Strato/B777/button_switch/fms_l/q", "Q", B777_fms_l_q_CMDhandler)
-B777CMD_fms_l_r                           = deferred_command("Strato/B777/button_switch/fms_l/r", "R", B777_fms_l_r_CMDhandler)
-B777CMD_fms_l_s                           = deferred_command("Strato/B777/button_switch/fms_l/s", "S", B777_fms_l_s_CMDhandler)
-B777CMD_fms_l_t                           = deferred_command("Strato/B777/button_switch/fms_l/t", "T", B777_fms_l_t_CMDhandler)
-B777CMD_fms_l_u                           = deferred_command("Strato/B777/button_switch/fms_l/u", "U", B777_fms_l_u_CMDhandler)
-B777CMD_fms_l_v                           = deferred_command("Strato/B777/button_switch/fms_l/v", "V", B777_fms_l_v_CMDhandler)
-B777CMD_fms_l_w                           = deferred_command("Strato/B777/button_switch/fms_l/w", "W", B777_fms_l_w_CMDhandler)
-B777CMD_fms_l_x                           = deferred_command("Strato/B777/button_switch/fms_l/x", "X", B777_fms_l_x_CMDhandler)
-B777CMD_fms_l_y                           = deferred_command("Strato/B777/button_switch/fms_l/y", "Y", B777_fms_l_y_CMDhandler)
-B777CMD_fms_l_z                           = deferred_command("Strato/B777/button_switch/fms_l_z", "Z", B777_fms_l_z_CMDhandler)
-B777CMD_fms_l_space                       = deferred_command("Strato/B777/button_switch/fms_l/space", "FMS L space", B777_fms_l_space_CMDhandler)
-B777CMD_fms_l_delete                      = deferred_command("Strato/B777/button_switch/fms_l/delete", "FMS L delete", B777_fms_l_delete_CMDhandler)
-B777CMD_fms_l_slash                       = deferred_command("Strato/B777/button_switch/fms_l/slash", "FMS L slash", B777_fms_l_slash_CMDhandler)
-B777CMD_fms_l_clear                       = deferred_command("Strato/B777/button_switch/fms_l/clear", "FMS L clear", B777_fms_l_clear_CMDhandler)
+---EFIS CONTROL----------
 
-B777CMD_fms_l_lsk_L1                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/L1", "LSK L1", B777_fms_l_lsk_L1_CMDhandler)
-B777CMD_fms_l_lsk_L2                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/L2", "LSK L2", B777_fms_l_lsk_L2_CMDhandler)
-B777CMD_fms_l_lsk_L3                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/L3", "LSK L3", B777_fms_l_lsk_L3_CMDhandler)
-B777CMD_fms_l_lsk_L4                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/L4", "LSK L4", B777_fms_l_lsk_L4_CMDhandler)
-B777CMD_fms_l_lsk_L5                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/L5", "LSK L5", B777_fms_l_lsk_L5_CMDhandler)
-B777CMD_fms_l_lsk_L6                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/L6", "LSK L6", B777_fms_l_lsk_L6_CMDhandler)
-B777CMD_fms_l_lsk_R1                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/R1", "LSK R1", B777_fms_l_lsk_R1_CMDhandler)
-B777CMD_fms_l_lsk_R2                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/R2", "LSK R2", B777_fms_l_lsk_R2_CMDhandler)
-B777CMD_fms_l_lsk_R3                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/R3", "LSK R3", B777_fms_l_lsk_R3_CMDhandler)
-B777CMD_fms_l_lsk_R4                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/R4", "LSK R4", B777_fms_l_lsk_R4_CMDhandler)
-B777CMD_fms_l_lsk_R5                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/R5", "LSK R5", B777_fms_l_lsk_R5_CMDhandler)
-B777CMD_fms_l_lsk_R6                      = deferred_command("Strato/B777/button_switch/fms_l/lsk/R6", "LSK R6", B777_fms_l_lsk_R6_CMDhandler)
+B777CMD_efis_wxr_button                   = deferred_command("Strato/B777/button_switch/efis/wxr", "ND Weather Radar Button", B777_efis_wxr_switch_CMDhandler)
+B777CMD_efis_sta_button                   = deferred_command("Strato/B777/button_switch/efis/sta", "ND STA Button", B777_efis_sta_switch_CMDhandler)
+B777CMD_efis_wpt_button                   = deferred_command("Strato/B777/button_switch/efis/wpt", "ND Waypoint Button", B777_efis_wpt_switch_CMDhandler)
+B777CMD_efis_tfc_button                   = deferred_command("Strato/B777/button_switch/efis/tfc", "ND Traffic Button", B777_efis_tfc_switch_CMDhandler)
+B777CMD_efis_baro_std_button              = deferred_command("Strato/B777/button_switch/efis/baro_std", "ND Standard Pressure Button", B777_efis_baro_std_switch_CMDhandler)
 
-B777CMD_fms_l_initref                     = deferred_command("Strato/B777/button_switch/fms_l/initref", "Init Ref button", B777_fms_l_initref_CMDhandler)
-B777CMD_fms_l_rte                         = deferred_command("Strato/B777/button_switch/fms_l/rte", "RTE button", B777_fms_l_rte_CMDhandler)
-B777CMD_fms_l_deparr                      = deferred_command("Strato/B777/button_switch/fms_l/deparr", "DEP ARR button", B777_fms_l_deparr_CMDhandler)
-B777CMD_fms_l_altn                        = deferred_command("Strato/B777/button_switch/fms_l/altn", "ALTN button", B777_fms_l_altn_CMDhandler)
-B777CMD_fms_l_vnav                        = deferred_command("Strato/B777/button_switch/fms_l/vnav", "VNAV button", B777_fms_l_vnav_CMDhandler)
-B777CMD_fms_l_fix                         = deferred_command("Strato/B777/button_switch/fms_l/fix", "FIX button", B777_fms_l_fix_CMDhandler)
-B777CMD_fms_l_legs                        = deferred_command("Strato/B777/button_switch/fms_l/legs", "LEGS button", B777_fms_l_legs_CMDhandler)
-B777CMD_fms_l_hold                        = deferred_command("Strato/B777/button_switch/fms_l/hold", "HOLD button", B777_fms_l_hold_CMDhandler)
-B777CMD_fms_l_fmccomm                     = deferred_command("Strato/B777/button_switch/fms_l/fmccom", "FMC COMM button", B777_fms_l_fmccomm_CMDhandler)
-B777CMD_fms_l_prog                        = deferred_command("Strato/B777/button_switch/fms_l/prog", "PROG button", B777_fms_l_prog_CMDhandler)
-B777CMD_fms_l_menu                        = deferred_command("Strato/B777/button_switch/fms_l/menu", "MENU button", B777_fms_l_menu_CMDhandler)
-B777CMD_fms_l_navrad                      = deferred_command("Strato/B777/button_switch/fms_l/navrad", "NAV RAD button", B777_fms_l_initref_CMDhandler)
-B777CMD_fms_l_prevpage                    = deferred_command("Strato/B777/button_switch/fms_l/prevpage", "PREF PAGE button", B777_fms_l_prevpage_CMDhandler)
-B777CMD_fms_l_nextpage                    = deferred_command("Strato/B777/button_switch/fms_l/nextpage", "NEXT PAGE button", B777_fms_l_nextpage_CMDhandler)
-B777_CMD_fms_l_exec                       = deferred_command("Strato/B777/button_switch/fms_l/exec", "EXEC button", B777_fms_l_exec_CMDhandler)
 
-B777CMD_fms_l_1                           = deferred_command("Strato/B777/button_switch/fms_l/1", "1", B777_fms_l_1_CMDhandler)
-B777CMD_fms_l_2                           = deferred_command("Strato/B777/button_switch/fms_l/2", "2", B777_fms_l_2_CMDhandler)
-B777CMD_fms_l_3                           = deferred_command("Strato/B777/button_switch/fms_l/3", "3", B777_fms_l_3_CMDhandler)
-B777CMD_fms_l_4                           = deferred_command("Strato/B777/button_switch/fms_l/4", "4", B777_fms_l_4_CMDhandler)
-B777CMD_fms_l_5                           = deferred_command("Strato/B777/button_switch/fms_l/5", "5", B777_fms_l_5_CMDhandler)
-B777CMD_fms_l_6                           = deferred_command("Strato/B777/button_switch/fms_l/6", "6", B777_fms_l_6_CMDhandler)
-B777CMD_fms_l_7                           = deferred_command("Strato/B777/button_switch/fms_l/7", "7", B777_fms_l_7_CMDhandler)
-B777CMD_fms_l_8                           = deferred_command("Strato/B777/button_switch/fms_l/8", "8", B777_fms_l_8_CMDhandler)
-B777CMD_fms_l_9                           = deferred_command("Strato/B777/button_switch/fms_l/9", "9", B777_fms_l_9_CMDhandler)
-B777CMD_fms_l_0                           = deferred_command("Strato/B777/button_switch/fms_l/0", "0", B777_fms_l_0_CMDhandler)
-B777CMD_fms_l_period                      = deferred_command("Strato/B777/button_switch/fms_l/period", "period", B777_fms_l_period_CMDhandler)
-B777CMD_fms_l_plusminus                   = deferred_command("Strato/B777/button_switch/fms_l/plusminus", "+/- button", B777_fms_l_plusminus_CMDhandler)
+---OVERHEAD----------
+
+--FORWARD-----
+
+--[[LIGHT SWITCHES USE THEIR RESPECTIVE DEFAULT DATAREFS:
+
+sim/cockpit2/switches/taxi_light_on
+sim/cockpit2/switches/landing_lights_switch
+sim/cockpit2/switches/strobe_lights_on
+sim/cockpit2/switches/navigation_lights_on
+sim/cockpit2/switches/beacon_on
+
 ]]
+
+--CENTER-----
+
+B777CMD_ovhd_c_batt_button                = deferred_command("Strato/B777/button_switch/ovhd_c/batt", "Battery Switch", B777_ovhd_c_batt_switch_CMDhandler)
+B777CMD_ovhd_c_apu_gen_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "APU Generator Switch", B777_ovhd_c_apu_gen_switch_CMDhandler)
+B777CMD_ovhd_c_bus_tie_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Bus Tie Switch", B777_ovhd_c_bus_tie_l_switch_CMDhandler)
+B777CMD_ovhd_c_bus_tie_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Bus Tie Switch", B777_ovhd_c_bus_tie_r_switch_CMDhandler)
+B777CMD_ovhd_c_eng_gen_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Engine Generator Switch", B777_ovhd_c_eng_gen_l_switch_CMDhandler)
+B777CMD_ovhd_c_eng_gen_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Engine Generator Switch", B777_ovhd_c_eng_gen_r_switch_CMDhandler)
+B777CMD_ovhd_c_ext_pwr_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "External Power Switch", B777_ovhd_c_ext_pwr_switch_CMDhandler)
+
+-- RAM AIR TURBINE USES DEFAULT DATAREF: sim/cockpit2/switches/ram_air_turbine_on
+
+--AFT-----
+
+
+---MAIN PANEL----------
+
+--GEAR LEVER USES DEFAULT DATAREF: sim/cockpit/switches/gear_handle_status
 
 --*************************************************************************************--
 --**                                       CODE                                      **--
 --*************************************************************************************--
 
-function checkXTLuaWorking()
-   print("XTLua Works! MAKE THE MANIPULATORS NATHROXER, I ALREADY MADE THE COMMANDS FOR THEM, YOU HAVE NO EXCUSE")
+-- ANIMATION UTILITY
+function B777_set_animation_position(current_value, target, min, max, speed)
+
+   local fps_factor = math.min(1.0, speed * SIM_PERIOD)
+
+   if target >= (max - 0.001) and current_value >= (max - 0.01) then
+       return max
+   elseif target <= (min + 0.001) and current_value <= (min + 0.01) then
+      return min
+   else
+       return current_value + ((target - current_value) * fps_factor)
+   end
+
 end
 
 --*************************************************************************************--
@@ -332,15 +525,17 @@ end
 --function aircraft_unload()
 
 function flight_start()
-   print("Lua Flight Start")
+   print("Lua Loaded")
 end
 
---function flight_crash()
+function flight_crash()
+   print("Bruh, why did you crash? Noob. Learn to fly.")
+end
 
 --function before_physics()
 
 function after_physics()
-   checkXTLuaWorking()
+   print("XTLua Works! MAKE THE MANIPULATORS NATHROXER, I ALREADY MADE THE COMMANDS FOR THEM, YOU HAVE NO EXCUSE")
 end
 
 --function after_replay()
