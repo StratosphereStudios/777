@@ -25,6 +25,7 @@ end
 --**                             CREATE CUSTOM COMMANDS                              **--
 --*************************************************************************************--
 
+B777CMD_ovhd_c_ext_pwr_button             = deferred_command("Strato/B777/button_switch/ovhd_c/ext_pwr", "External Power Switch", B777_ovhd_c_ext_pwr_switch_CMDhandler)
 
 --*************************************************************************************--
 --**                             CREATE CUSTOM DATAREFS                              **--

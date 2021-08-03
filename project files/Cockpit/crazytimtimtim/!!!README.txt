@@ -1,0 +1,3 @@
+The files in this folder are models by Nathroxer that I (crazytimtimtim) am working on animations and manipulators for.
+
+FOR NATHROXER: YOU NEED THE LATEST XTLUA CODE FROM GITHUB FOR THESE TO WORK. You still need to delete backfaces or something and probably mess with materials. I only created animations and manips, nothing else. I noticed a few issues with the alignment of knobs on the MCP, so please fix that.

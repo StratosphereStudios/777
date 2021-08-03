@@ -48,7 +48,7 @@ IN_REPLAY - evaluates to 0 if replay is off, 1 if replay mode is on
 --**                               FIND X-PLANE DATAREFS                             **--
 --*************************************************************************************--
 
-
+simDR_ap_airspeed_is_mach               = find_dataref("sim/cockpit/autopilot/airspeed_is_mach")
 
 --*************************************************************************************--
 --**                              CUSTOM DATAREF HANDLERS                            **--
@@ -264,25 +264,31 @@ function B777_ap_disengage_switch_CMDhandler(phase, duration)  -- A/P DISENGAGE 
    end
 end
 
-function B777_fd_capt_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+function B777_fd_capt_dn_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
    if phase == 1 then
-      if B777DR_mcp_button_positions[13] == 0 then
-         simCMD_fd_capt_on:once()
-      elseif  B777DR_mcp_button_positions[13] == 1 then
-         simCMD_fd_capt_off:once()
-      end
-      B777DR_mcp_button_positions[13] = 1 - B777DR_mcp_button_positions[13]
+      B777DR_mcp_button_positions[13] = 0
+      simCMD_fd_capt_off:once()
    end
 end
 
-function B777_fd_fo_CMDhandler(phase, duration)               -- F/O F/D SWITCH
+function B777_fd_capt_up_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
    if phase == 1 then
-      if B777DR_mcp_button_positions[14] == 0 then
+         simCMD_fd_capt_on:once()
+         B777DR_mcp_button_positions[13] = 1
+   end
+end
+
+function B777_fd_fo_dn_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+   if phase == 1 then
+      B777DR_mcp_button_positions[14] = 0
+      simCMD_fd_fo_off:once()
+   end
+end
+
+function B777_fd_fo_up_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+   if phase == 1 then
          simCMD_fd_fo_on:once()
-      elseif  B777DR_mcp_button_positions[14] == 1 then
-         simCMD_fd_fo_off:once()
-      end
-      B777DR_mcp_button_positions[14] = 1 - B777DR_mcp_button_positions[14]
+         B777DR_mcp_button_positions[14] = 1
    end
 end
 
@@ -293,6 +299,12 @@ function B777_autothrottle_switch_CMDhandler()
       elseif  B777DR_mcp_button_positions[15] == 1 then
          B777DR_mcp_button_positions[15] = 0
       end
+   end
+end
+
+function B777_ap_iasMach_CMDhandler(phase, duration)
+   if phase == 1 then
+      simDR_ap_airspeed_is_mach = 1 - simDR_ap_airspeed_is_mach
    end
 end
 
@@ -438,10 +450,13 @@ B777CMD_mcp_ap_engage_1                   = deferred_command("Strato/B777/button
 B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler)
 B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
 
-B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
-B777CMD_mcp_flightdirector_fo             = deferred_command("Strato/B777/button_switch/mcp/fd/fo", "F/O Flight Director Switch", B777_fd_fo_CMDhandler)
+B777CMD_mcp_flightdirector_capt_on        = deferred_command("Strato/B777/button_switch/mcp/fd/capt/on", "Captain Flight Director Switch On", B777_fd_capt_up_CMDhandler)
+B777CMD_mcp_flightdirector_capt_off       = deferred_command("Strato/B777/button_switch/mcp/fd/capt/off", "Captain Flight Director Switch Off", B777_fd_capt_dn_CMDhandler)
 
-B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
+B777CMD_mcp_flightdirector_fo_on          = deferred_command("Strato/B777/button_switch/mcp/fd/fo/on", "F/O Flight Director Switch On", B777_fd_fo_up_CMDhandler)
+B777CMD_mcp_flightdirector_fo_off         = deferred_command("Strato/B777/button_switch/mcp/fd/fo/off", "F/O Flight Director Switch Off", B777_fd_fo_dn_CMDhandler)
+
+--B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
 --B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
 
 B777CMD_mcp_ap_loc                        = deferred_command("Strato/B777/button_switch/mcp/ap/loc", "Localizer A/P Mode", B777_ap_loc_switch_CMDhandler)
@@ -453,6 +468,7 @@ B777CMD_mcp_ap_hdgSel                     = deferred_command("Strato/B777/button
 B777CMD_mcp_ap_lnav                       = deferred_command("Strato/B777/button_switch/mcp/ap/lnav", "LNAV A/P Mode", B777_ap_lnav_switch_CMDhandler)
 B777CMD_mcp_ap_vnav                       = deferred_command("Strato/B777/button_switch/mcp/ap/vnav", "VNAV A/P Mode", B777_ap_vnav_switch_CMDhandler)
 B777CMD_mcp_ap_flch                       = deferred_command("Strato/B777/button_switch/mcp/ap/flch", "FLCH A/P Mode", B777_ap_flch_switch_CMDhandler)
+B777CMD_mcp_ap_iasMach                    = deferred_command("Strato/B777/button_switch/mcp/ap/ias_mach", "Airspeed/Mach Button", B777_ap_iasMach_CMDhandler)
 
 
 ---EFIS CONTROL----------
@@ -482,11 +498,13 @@ sim/cockpit2/switches/beacon_on
 
 B777CMD_ovhd_c_batt_button                = deferred_command("Strato/B777/button_switch/ovhd_c/batt", "Battery Switch", B777_ovhd_c_batt_switch_CMDhandler)
 B777CMD_ovhd_c_apu_gen_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "APU Generator Switch", B777_ovhd_c_apu_gen_switch_CMDhandler)
-B777CMD_ovhd_c_bus_tie_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Bus Tie Switch", B777_ovhd_c_bus_tie_l_switch_CMDhandler)
-B777CMD_ovhd_c_bus_tie_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Bus Tie Switch", B777_ovhd_c_bus_tie_r_switch_CMDhandler)
-B777CMD_ovhd_c_eng_gen_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Engine Generator Switch", B777_ovhd_c_eng_gen_l_switch_CMDhandler)
-B777CMD_ovhd_c_eng_gen_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Engine Generator Switch", B777_ovhd_c_eng_gen_r_switch_CMDhandler)
-B777CMD_ovhd_c_ext_pwr_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "External Power Switch", B777_ovhd_c_ext_pwr_switch_CMDhandler)
+
+B777CMD_ovhd_c_eng_gen_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/eng_gen1", "L Engine Generator Switch", B777_ovhd_c_eng_gen_l_switch_CMDhandler)
+B777CMD_ovhd_c_eng_gen_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/eng_gen2", "R Engine Generator Switch", B777_ovhd_c_eng_gen_r_switch_CMDhandler)
+--B777CMD_ovhd_c_bus_tie_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Bus Tie Switch", B777_ovhd_c_bus_tie_l_switch_CMDhandler)
+--B777CMD_ovhd_c_bus_tie_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "R Bus Tie Switch", B777_ovhd_c_bus_tie_r_switch_CMDhandler)
+--B777CMD_ovhd_c_ext_pwr_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "External Power Switch", B777_ovhd_c_ext_pwr_switch_CMDhandler)
+--EXTERNAL POWER IS IN ELECTRICAL MODULE
 
 -- RAM AIR TURBINE USES DEFAULT DATAREF: sim/cockpit2/switches/ram_air_turbine_on
 
@@ -520,7 +538,9 @@ end
 --**                                    EVENT CALLBACKS                              **--
 --*************************************************************************************--
 
---function aircraft_load()
+function aircraft_load()
+   print("manipulators loaded")
+end
 
 --function aircraft_unload()
 
