@@ -11,8 +11,6 @@
 *****************************************************************************************
 --]]
 
---TODO: Figure out knobs/dials
-
 --replace create_command
 function deferred_command(name,desc,realFunc)
 	return replace_command(name,realFunc)
@@ -48,7 +46,6 @@ IN_REPLAY - evaluates to 0 if replay is off, 1 if replay mode is on
 --**                               FIND X-PLANE DATAREFS                             **--
 --*************************************************************************************--
 
-simDR_ap_airspeed_is_mach               = find_dataref("sim/cockpit/autopilot/airspeed_is_mach")
 
 --*************************************************************************************--
 --**                              CUSTOM DATAREF HANDLERS                            **--
@@ -101,7 +98,9 @@ simCMD_fd_fo_off                         = find_command("sim/autopilot/servos_fd
 ---EFIS----------
 simCMD_efis_wxr                          = find_command("sim/instruments/EFIS_wxr")
 simCMD_efis_tfc                          = find_command("sim/instruments/EFIS_tcas")
-simCMD_efis_baro_rst                     = find_command("sim/instruments/barometer_2992")
+simCMD_efis_fix                          = find_command("sim/instruments/EFIS_fix")
+simCMD_efis_vor                          = find_command("sim/instruments/EFIS_vor")
+simCMD_efis_apt                          = find_command("sim/instruments/EFIS_apt")
 
 
 ---OVERHEAD----------
@@ -302,12 +301,6 @@ function B777_autothrottle_switch_CMDhandler()
    end
 end
 
-function B777_ap_iasMach_CMDhandler(phase, duration)
-   if phase == 1 then
-      simDR_ap_airspeed_is_mach = 1 - simDR_ap_airspeed_is_mach
-   end
-end
-
 ---EFIS----------
 
 function B777_efis_wxr_switch_CMDhandler(phase, duration)
@@ -324,9 +317,25 @@ end
 --TODO: GET THESE DONE, ALONG WITH AUTOTHROTTLE
 
 function B777_efis_sta_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_efis_button_positions[2] = 1
+      simCMD_efis_vor:once()
+   elseif phase == 1 then
+      B777DR_efis_button_positions[2] = 1
+   elseif phase == 2 then
+      B777DR_efis_button_positions[2] = 0
+   end
 end
 
 function B777_efis_wpt_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_efis_button_positions[3] = 1
+      simCMD_efis_fix:once()
+   elseif phase == 1 then
+      B777DR_efis_button_positions[3] = 1
+   elseif phase == 2 then
+      B777DR_efis_button_positions[3] = 0
+   end
 end
 
 function B777_efis_tfc_switch_CMDhandler(phase, duration)
@@ -340,14 +349,14 @@ function B777_efis_tfc_switch_CMDhandler(phase, duration)
    end
 end
 
-function B777_efis_baro_std_switch_CMDhandler(phase, duration)
+function B777_efis_apt_switch_CMDhandler(phase, duration)
    if phase == 0 then
-      B777DR_efis_button_positions[5] = 1
-      simCMD_efis_baro_rst:once()
+      B777DR_efis_button_positions[6] = 1
+      simCMD_efis_apt:once()
    elseif phase == 1 then
-      B777DR_efis_button_positions[5] = 1
+      B777DR_efis_button_positions[6] = 1
    elseif phase == 2 then
-      B777DR_efis_button_positions[5] = 0
+      B777DR_efis_button_positions[6] = 0
    end
 end
 
@@ -468,7 +477,6 @@ B777CMD_mcp_ap_hdgSel                     = deferred_command("Strato/B777/button
 B777CMD_mcp_ap_lnav                       = deferred_command("Strato/B777/button_switch/mcp/ap/lnav", "LNAV A/P Mode", B777_ap_lnav_switch_CMDhandler)
 B777CMD_mcp_ap_vnav                       = deferred_command("Strato/B777/button_switch/mcp/ap/vnav", "VNAV A/P Mode", B777_ap_vnav_switch_CMDhandler)
 B777CMD_mcp_ap_flch                       = deferred_command("Strato/B777/button_switch/mcp/ap/flch", "FLCH A/P Mode", B777_ap_flch_switch_CMDhandler)
-B777CMD_mcp_ap_iasMach                    = deferred_command("Strato/B777/button_switch/mcp/ap/ias_mach", "Airspeed/Mach Button", B777_ap_iasMach_CMDhandler)
 
 
 ---EFIS CONTROL----------
@@ -477,8 +485,7 @@ B777CMD_efis_wxr_button                   = deferred_command("Strato/B777/button
 B777CMD_efis_sta_button                   = deferred_command("Strato/B777/button_switch/efis/sta", "ND STA Button", B777_efis_sta_switch_CMDhandler)
 B777CMD_efis_wpt_button                   = deferred_command("Strato/B777/button_switch/efis/wpt", "ND Waypoint Button", B777_efis_wpt_switch_CMDhandler)
 B777CMD_efis_tfc_button                   = deferred_command("Strato/B777/button_switch/efis/tfc", "ND Traffic Button", B777_efis_tfc_switch_CMDhandler)
-B777CMD_efis_baro_std_button              = deferred_command("Strato/B777/button_switch/efis/baro_std", "ND Standard Pressure Button", B777_efis_baro_std_switch_CMDhandler)
-
+B777CMD_efis_apt_button                   = deferred_command("Strato/B777/button_switch/efis/apt", "ND Airport Button", B777_efis_apt_switch_CMDhandler)
 
 ---OVERHEAD----------
 
