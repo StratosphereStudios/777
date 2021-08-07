@@ -291,6 +291,7 @@ function B777_fd_fo_up_CMDhandler(phase, duration)              -- CAPTAIN F/D S
    end
 end
 
+--[[
 function B777_autothrottle_switch_CMDhandler()
    if phase == 1 then
       if B777DR_mcp_button_positions[15] == 0 then
@@ -300,6 +301,7 @@ function B777_autothrottle_switch_CMDhandler()
       end
    end
 end
+]]
 
 ---EFIS----------
 
