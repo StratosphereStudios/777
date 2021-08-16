@@ -2960,7 +2960,7 @@ DREF sim/flightmodel2/wing/flap1_deg
 DREF sim/flightmodel2/wing/flap1_deg[*]
 DREF sim/flightmodel2/wing/flap1_deg[0]
 DREF sim/cockpit2/gauges/indicators/true_airspeed_kts_pilot
-DREF laminar/B738/effect/vortex
+DREF 
 END_EMITTER
 EMITTER
  NAME wingtip_vortex_R
@@ -3098,7 +3098,7 @@ DREF sim/flightmodel2/wing/flap1_deg
 DREF sim/flightmodel2/wing/flap1_deg[*]
 DREF sim/flightmodel2/wing/flap1_deg[0]
 DREF sim/cockpit2/gauges/indicators/true_airspeed_kts_pilot
-DREF laminar/B738/effect/vortex
+DREF 
 END_EMITTER
 EMITTER
  NAME wing_condens
@@ -3217,7 +3217,7 @@ DREF
 DREF sim/weather/visibility_reported_m
 DREF sim/flightmodel2/wing/flap1_deg[0]
 DREF sim/flightmodel2/misc/AoA_angle_degrees
-DREF laminar/B738/effect/vortex2
+DREF 
 END_EMITTER
 EMITTER
  NAME engine_inlet_cond
@@ -3544,11 +3544,11 @@ DATAREFS 8
 DREF 
 DREF sim/aircraft/artstability/acf_ASh_hi_pos
 DREF 
-DREF laminar/B738/effect/rain_size
-DREF laminar/B738/effect/rain_life
-DREF laminar/B738/effect/rain_speed
-DREF laminar/B738/effect/rain_rate1
-DREF laminar/B738/effect/rain_angle_left
+DREF 
+DREF 
+DREF 
+DREF 
+DREF 
 END_EMITTER
 EMITTER
  NAME rain_right
@@ -3635,10 +3635,10 @@ DATAREFS 8
 DREF 
 DREF sim/aircraft/artstability/acf_ASh_hi_pos
 DREF 
-DREF laminar/B738/effect/rain_size
-DREF laminar/B738/effect/rain_life
-DREF laminar/B738/effect/rain_speed
-DREF laminar/B738/effect/rain_rate2
+DREF 
+DREF 
+DREF 
+DREF 
 DREF 
 END_EMITTER
 EMITTER
@@ -3721,7 +3721,7 @@ INTERP_MODE CUBIC_AVG
 END_KEYFRAME_TABLE
 END_SUB_EMITTER
 DATAREFS 1
-DREF laminar/B738/de_ice_truck/act
+DREF 
 END_EMITTER
 EMITTER
  NAME de_ice_2
@@ -3803,7 +3803,7 @@ INTERP_MODE CUBIC_AVG
 END_KEYFRAME_TABLE
 END_SUB_EMITTER
 DATAREFS 1
-DREF laminar/B738/de_ice_truck/act
+DREF 
 END_EMITTER
 EMITTER
  NAME tire_touchdown
@@ -3883,7 +3883,7 @@ INTERP_MODE CUBIC_AVG
 END_KEYFRAME_TABLE
 END_SUB_EMITTER
 DATAREFS 1
-DREF laminar/B738/effect/touchdown[*]
+DREF 
 END_EMITTER
 EMITTER
  NAME engine_black_smoke
