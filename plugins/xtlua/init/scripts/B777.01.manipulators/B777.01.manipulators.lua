@@ -50,8 +50,6 @@ B777CMD_mcp_ap_hdgSel                     = deferred_command("Strato/B777/button
 B777CMD_mcp_ap_lnav                       = deferred_command("Strato/B777/button_switch/mcp/ap/lnav", "LNAV A/P Mode", B777_ap_lnav_switch_CMDhandler)
 B777CMD_mcp_ap_vnav                       = deferred_command("Strato/B777/button_switch/mcp/ap/vnav", "VNAV A/P Mode", B777_ap_vnav_switch_CMDhandler)
 B777CMD_mcp_ap_flch                       = deferred_command("Strato/B777/button_switch/mcp/ap/flch", "FLCH A/P Mode", B777_ap_flch_switch_CMDhandler)
-B777CMD_mcp_ap_iasMach                    = deferred_command("Strato/B777/button_switch/mcp/ap/ias_mach", "Airspeed/Mach Button", B777_ap_iasMach_CMDhandler)
-B777CMD_mcp_at_spd                        = deferred_command("Strato/B777/button_switch/mcp/at_spd", "Autothrottle Speed Mode", B777_at_spd_CMDhandler)
 
 
 ---EFIS CONTROL----------
@@ -60,8 +58,7 @@ B777CMD_efis_wxr_button                   = deferred_command("Strato/B777/button
 B777CMD_efis_sta_button                   = deferred_command("Strato/B777/button_switch/efis/sta", "ND STA Button", B777_efis_sta_switch_CMDhandler)
 B777CMD_efis_wpt_button                   = deferred_command("Strato/B777/button_switch/efis/wpt", "ND Waypoint Button", B777_efis_wpt_switch_CMDhandler)
 B777CMD_efis_tfc_button                   = deferred_command("Strato/B777/button_switch/efis/tfc", "ND Traffic Button", B777_efis_tfc_switch_CMDhandler)
-B777CMD_efis_baro_std_button              = deferred_command("Strato/B777/button_switch/efis/baro_std", "ND Standard Pressure Button", B777_efis_baro_std_switch_CMDhandler)
-
+B777CMD_efis_apt_button                   = deferred_command("Strato/B777/button_switch/efis/apt", "ND Airport Button", B777_efis_apt_switch_CMDhandler)
 
 ---OVERHEAD----------
 
@@ -81,6 +78,7 @@ sim/cockpit2/switches/beacon_on
 
 B777CMD_ovhd_c_batt_button                = deferred_command("Strato/B777/button_switch/ovhd_c/batt", "Battery Switch", B777_ovhd_c_batt_switch_CMDhandler)
 B777CMD_ovhd_c_apu_gen_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "APU Generator Switch", B777_ovhd_c_apu_gen_switch_CMDhandler)
+
 B777CMD_ovhd_c_eng_gen_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/eng_gen1", "L Engine Generator Switch", B777_ovhd_c_eng_gen_l_switch_CMDhandler)
 B777CMD_ovhd_c_eng_gen_r_button           = deferred_command("Strato/B777/button_switch/ovhd_c/eng_gen2", "R Engine Generator Switch", B777_ovhd_c_eng_gen_r_switch_CMDhandler)
 --B777CMD_ovhd_c_bus_tie_l_button           = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "L Bus Tie Switch", B777_ovhd_c_bus_tie_l_switch_CMDhandler)
@@ -88,6 +86,7 @@ B777CMD_ovhd_c_eng_gen_r_button           = deferred_command("Strato/B777/button
 --B777CMD_ovhd_c_ext_pwr_button             = deferred_command("Strato/B777/button_switch/ovhd_c/apu_gen", "External Power Switch", B777_ovhd_c_ext_pwr_switch_CMDhandler)
 --EXTERNAL POWER IS IN ELECTRICAL MODULE
 
+-- RAM AIR TURBINE USES DEFAULT DATAREF: sim/cockpit2/switches/ram_air_turbine_on
 
 --AFT-----
 
