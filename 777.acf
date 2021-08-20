@@ -216,7 +216,11 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 4.153251648
 P _gear/0/_lonR 110.0
 P _gear/0/_scon 303177.593750000
+<<<<<<< HEAD
+P _gear/0/_stat_def 0.389597446
+=======
 P _gear/0/_stat_def 0.429676324
+>>>>>>> 47aa6bedd820bf1c1236670eeeeea07d8aee0975
 P _gear/0/_steerdeg_hispeed 7.0
 P _gear/0/_steerdeg_lospeed 70.0
 P _gear/0/_strut_comp 0.0
@@ -250,7 +254,11 @@ P _gear/1/_lonE -9.0
 P _gear/1/_lonN -8.358133316
 P _gear/1/_lonR 8.0
 P _gear/1/_scon 303177.593750000
+<<<<<<< HEAD
+P _gear/1/_stat_def 1.086652637
+=======
 P _gear/1/_stat_def 0.955472231
+>>>>>>> 47aa6bedd820bf1c1236670eeeeea07d8aee0975
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -284,7 +292,11 @@ P _gear/2/_lonE -9.0
 P _gear/2/_lonN -8.358133316
 P _gear/2/_lonR 8.0
 P _gear/2/_scon 303177.593750000
+<<<<<<< HEAD
+P _gear/2/_stat_def 1.086652637
+=======
 P _gear/2/_stat_def 0.957179844
+>>>>>>> 47aa6bedd820bf1c1236670eeeeea07d8aee0975
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -593,8 +605,8 @@ P _lite/9/_width 0.0
 P _lite/count 16
 P _lite_equip/_land_lite_off_on_retract_EQ 1
 P _lite_equip/_taxi_lite_off_on_retract_EQ 1
-P _obja/0/_obj_flags 16
-P _obja/0/_v10_att_file_stl fuesalage_main.obj
+P _obja/0/_obj_flags 20
+P _obja/0/_v10_att_file_stl fues.obj
 P _obja/0/_v10_att_part -1
 P _obja/0/_v10_att_phi_ref 0.0
 P _obja/0/_v10_att_psi_ref 0.0
@@ -604,8 +616,8 @@ P _obja/0/_v10_att_y_acf_prt_ref 0.0
 P _obja/0/_v10_att_z_acf_prt_ref 100.0
 P _obja/0/_v10_is_internal -2122844336
 P _obja/0/_v10_steers_with_gear 0
-P _obja/1/_obj_flags 16
-P _obja/1/_v10_att_file_stl horizontonal stabilizer 1.obj
+P _obja/1/_obj_flags 20
+P _obja/1/_v10_att_file_stl tail.obj
 P _obja/1/_v10_att_part -1
 P _obja/1/_v10_att_phi_ref 0.0
 P _obja/1/_v10_att_psi_ref 0.0
@@ -616,7 +628,7 @@ P _obja/1/_v10_att_z_acf_prt_ref 100.0
 P _obja/1/_v10_is_internal -2122844336
 P _obja/1/_v10_steers_with_gear 0
 P _obja/10/_obj_flags 9
-P _obja/10/_v10_att_file_stl first_class.obj
+P _obja/10/_v10_att_file_stl cockpit/seats.obj
 P _obja/10/_v10_att_part -1
 P _obja/10/_v10_att_phi_ref 0.0
 P _obja/10/_v10_att_psi_ref 0.0
@@ -624,10 +636,10 @@ P _obja/10/_v10_att_the_ref 0.0
 P _obja/10/_v10_att_x_acf_prt_ref 0.0
 P _obja/10/_v10_att_y_acf_prt_ref 0.0
 P _obja/10/_v10_att_z_acf_prt_ref 100.0
-P _obja/10/_v10_is_internal -1971719296
+P _obja/10/_v10_is_internal 1561261088
 P _obja/10/_v10_steers_with_gear 0
-P _obja/11/_obj_flags 0
-P _obja/11/_v10_att_file_stl interior.obj
+P _obja/11/_obj_flags 13
+P _obja/11/_v10_att_file_stl cockpit/yokes.obj
 P _obja/11/_v10_att_part -1
 P _obja/11/_v10_att_phi_ref 0.0
 P _obja/11/_v10_att_psi_ref 0.0
@@ -635,10 +647,10 @@ P _obja/11/_v10_att_the_ref 0.0
 P _obja/11/_v10_att_x_acf_prt_ref 0.0
 P _obja/11/_v10_att_y_acf_prt_ref 0.0
 P _obja/11/_v10_att_z_acf_prt_ref 100.0
-P _obja/11/_v10_is_internal -1248725696
+P _obja/11/_v10_is_internal 1561261088
 P _obja/11/_v10_steers_with_gear 0
 P _obja/12/_obj_flags 9
-P _obja/12/_v10_att_file_stl cockpit/seats.obj
+P _obja/12/_v10_att_file_stl cockpit/cockpit_main.obj
 P _obja/12/_v10_att_part -1
 P _obja/12/_v10_att_phi_ref 0.0
 P _obja/12/_v10_att_psi_ref 0.0
@@ -646,10 +658,10 @@ P _obja/12/_v10_att_the_ref 0.0
 P _obja/12/_v10_att_x_acf_prt_ref 0.0
 P _obja/12/_v10_att_y_acf_prt_ref 0.0
 P _obja/12/_v10_att_z_acf_prt_ref 100.0
-P _obja/12/_v10_is_internal 1561261088
+P _obja/12/_v10_is_internal 163247904
 P _obja/12/_v10_steers_with_gear 0
 P _obja/13/_obj_flags 13
-P _obja/13/_v10_att_file_stl cockpit/yokes.obj
+P _obja/13/_v10_att_file_stl cockpit/ovhd_1.obj
 P _obja/13/_v10_att_part -1
 P _obja/13/_v10_att_phi_ref 0.0
 P _obja/13/_v10_att_psi_ref 0.0
@@ -657,10 +669,10 @@ P _obja/13/_v10_att_the_ref 0.0
 P _obja/13/_v10_att_x_acf_prt_ref 0.0
 P _obja/13/_v10_att_y_acf_prt_ref 0.0
 P _obja/13/_v10_att_z_acf_prt_ref 100.0
-P _obja/13/_v10_is_internal 1561261088
+P _obja/13/_v10_is_internal 75011632
 P _obja/13/_v10_steers_with_gear 0
-P _obja/14/_obj_flags 9
-P _obja/14/_v10_att_file_stl cockpit/cockpit_main.obj
+P _obja/14/_obj_flags 13
+P _obja/14/_v10_att_file_stl cockpit/glareshield.obj
 P _obja/14/_v10_att_part -1
 P _obja/14/_v10_att_phi_ref 0.0
 P _obja/14/_v10_att_psi_ref 0.0
@@ -668,10 +680,10 @@ P _obja/14/_v10_att_the_ref 0.0
 P _obja/14/_v10_att_x_acf_prt_ref 0.0
 P _obja/14/_v10_att_y_acf_prt_ref 0.0
 P _obja/14/_v10_att_z_acf_prt_ref 100.0
-P _obja/14/_v10_is_internal 163247904
+P _obja/14/_v10_is_internal 357890400
 P _obja/14/_v10_steers_with_gear 0
 P _obja/15/_obj_flags 13
-P _obja/15/_v10_att_file_stl cockpit/ovhd_1.obj
+P _obja/15/_v10_att_file_stl cockpit/ovhd_2.obj
 P _obja/15/_v10_att_part -1
 P _obja/15/_v10_att_phi_ref 0.0
 P _obja/15/_v10_att_psi_ref 0.0
@@ -679,10 +691,10 @@ P _obja/15/_v10_att_the_ref 0.0
 P _obja/15/_v10_att_x_acf_prt_ref 0.0
 P _obja/15/_v10_att_y_acf_prt_ref 0.0
 P _obja/15/_v10_att_z_acf_prt_ref 100.0
-P _obja/15/_v10_is_internal 75011632
+P _obja/15/_v10_is_internal 623418
 P _obja/15/_v10_steers_with_gear 0
-P _obja/16/_obj_flags 13
-P _obja/16/_v10_att_file_stl cockpit/glareshield.obj
+P _obja/16/_obj_flags 15
+P _obja/16/_v10_att_file_stl cockpit/mcp.obj
 P _obja/16/_v10_att_part -1
 P _obja/16/_v10_att_phi_ref 0.0
 P _obja/16/_v10_att_psi_ref 0.0
@@ -690,10 +702,10 @@ P _obja/16/_v10_att_the_ref 0.0
 P _obja/16/_v10_att_x_acf_prt_ref 0.0
 P _obja/16/_v10_att_y_acf_prt_ref 0.0
 P _obja/16/_v10_att_z_acf_prt_ref 100.0
-P _obja/16/_v10_is_internal 357890400
+P _obja/16/_v10_is_internal 703238
 P _obja/16/_v10_steers_with_gear 0
-P _obja/17/_obj_flags 13
-P _obja/17/_v10_att_file_stl cockpit/ovhd_2.obj
+P _obja/17/_obj_flags 9
+P _obja/17/_v10_att_file_stl economy.obj
 P _obja/17/_v10_att_part -1
 P _obja/17/_v10_att_phi_ref 0.0
 P _obja/17/_v10_att_psi_ref 0.0
@@ -701,10 +713,10 @@ P _obja/17/_v10_att_the_ref 0.0
 P _obja/17/_v10_att_x_acf_prt_ref 0.0
 P _obja/17/_v10_att_y_acf_prt_ref 0.0
 P _obja/17/_v10_att_z_acf_prt_ref 100.0
-P _obja/17/_v10_is_internal 623418
+P _obja/17/_v10_is_internal 697300
 P _obja/17/_v10_steers_with_gear 0
 P _obja/18/_obj_flags 15
-P _obja/18/_v10_att_file_stl cockpit/mcp.obj
+P _obja/18/_v10_att_file_stl cockpit/main_pnl.obj
 P _obja/18/_v10_att_part -1
 P _obja/18/_v10_att_phi_ref 0.0
 P _obja/18/_v10_att_psi_ref 0.0
@@ -712,10 +724,10 @@ P _obja/18/_v10_att_the_ref 0.0
 P _obja/18/_v10_att_x_acf_prt_ref 0.0
 P _obja/18/_v10_att_y_acf_prt_ref 0.0
 P _obja/18/_v10_att_z_acf_prt_ref 100.0
-P _obja/18/_v10_is_internal 703238
+P _obja/18/_v10_is_internal 248826
 P _obja/18/_v10_steers_with_gear 0
-P _obja/19/_obj_flags 9
-P _obja/19/_v10_att_file_stl economy.obj
+P _obja/19/_obj_flags 13
+P _obja/19/_v10_att_file_stl cockpit/center_ped_1.obj
 P _obja/19/_v10_att_part -1
 P _obja/19/_v10_att_phi_ref 0.0
 P _obja/19/_v10_att_psi_ref 0.0
@@ -723,10 +735,10 @@ P _obja/19/_v10_att_the_ref 0.0
 P _obja/19/_v10_att_x_acf_prt_ref 0.0
 P _obja/19/_v10_att_y_acf_prt_ref 0.0
 P _obja/19/_v10_att_z_acf_prt_ref 100.0
-P _obja/19/_v10_is_internal 697300
+P _obja/19/_v10_is_internal 303362880
 P _obja/19/_v10_steers_with_gear 0
 P _obja/2/_obj_flags 16
-P _obja/2/_v10_att_file_stl horizontonal stabilizer 2.obj
+P _obja/2/_v10_att_file_stl Landing gear 1.obj
 P _obja/2/_v10_att_part -1
 P _obja/2/_v10_att_phi_ref 0.0
 P _obja/2/_v10_att_psi_ref 0.0
@@ -736,8 +748,8 @@ P _obja/2/_v10_att_y_acf_prt_ref 0.0
 P _obja/2/_v10_att_z_acf_prt_ref 100.0
 P _obja/2/_v10_is_internal -2122844336
 P _obja/2/_v10_steers_with_gear 0
-P _obja/20/_obj_flags 15
-P _obja/20/_v10_att_file_stl cockpit/main_pnl.obj
+P _obja/20/_obj_flags 13
+P _obja/20/_v10_att_file_stl cockpit/center_ped_2.obj
 P _obja/20/_v10_att_part -1
 P _obja/20/_v10_att_phi_ref 0.0
 P _obja/20/_v10_att_psi_ref 0.0
@@ -745,32 +757,10 @@ P _obja/20/_v10_att_the_ref 0.0
 P _obja/20/_v10_att_x_acf_prt_ref 0.0
 P _obja/20/_v10_att_y_acf_prt_ref 0.0
 P _obja/20/_v10_att_z_acf_prt_ref 100.0
-P _obja/20/_v10_is_internal 248826
+P _obja/20/_v10_is_internal 400135728
 P _obja/20/_v10_steers_with_gear 0
-P _obja/21/_obj_flags 13
-P _obja/21/_v10_att_file_stl cockpit/center_ped_1.obj
-P _obja/21/_v10_att_part -1
-P _obja/21/_v10_att_phi_ref 0.0
-P _obja/21/_v10_att_psi_ref 0.0
-P _obja/21/_v10_att_the_ref 0.0
-P _obja/21/_v10_att_x_acf_prt_ref 0.0
-P _obja/21/_v10_att_y_acf_prt_ref 0.0
-P _obja/21/_v10_att_z_acf_prt_ref 100.0
-P _obja/21/_v10_is_internal 303362880
-P _obja/21/_v10_steers_with_gear 0
-P _obja/22/_obj_flags 13
-P _obja/22/_v10_att_file_stl cockpit/center_ped_2.obj
-P _obja/22/_v10_att_part -1
-P _obja/22/_v10_att_phi_ref 0.0
-P _obja/22/_v10_att_psi_ref 0.0
-P _obja/22/_v10_att_the_ref 0.0
-P _obja/22/_v10_att_x_acf_prt_ref 0.0
-P _obja/22/_v10_att_y_acf_prt_ref 0.0
-P _obja/22/_v10_att_z_acf_prt_ref 100.0
-P _obja/22/_v10_is_internal 400135728
-P _obja/22/_v10_steers_with_gear 0
 P _obja/3/_obj_flags 16
-P _obja/3/_v10_att_file_stl Landing gear 1.obj
+P _obja/3/_v10_att_file_stl Landing gear 3.obj
 P _obja/3/_v10_att_part -1
 P _obja/3/_v10_att_phi_ref 0.0
 P _obja/3/_v10_att_psi_ref 0.0
@@ -781,7 +771,7 @@ P _obja/3/_v10_att_z_acf_prt_ref 100.0
 P _obja/3/_v10_is_internal -2122844336
 P _obja/3/_v10_steers_with_gear 0
 P _obja/4/_obj_flags 16
-P _obja/4/_v10_att_file_stl Landing gear 3.obj
+P _obja/4/_v10_att_file_stl wing 1.obj
 P _obja/4/_v10_att_part -1
 P _obja/4/_v10_att_phi_ref 0.0
 P _obja/4/_v10_att_psi_ref 0.0
@@ -792,7 +782,7 @@ P _obja/4/_v10_att_z_acf_prt_ref 100.0
 P _obja/4/_v10_is_internal -2122844336
 P _obja/4/_v10_steers_with_gear 0
 P _obja/5/_obj_flags 16
-P _obja/5/_v10_att_file_stl wing 1.obj
+P _obja/5/_v10_att_file_stl landing gear 2.obj
 P _obja/5/_v10_att_part -1
 P _obja/5/_v10_att_phi_ref 0.0
 P _obja/5/_v10_att_psi_ref 0.0
@@ -803,7 +793,7 @@ P _obja/5/_v10_att_z_acf_prt_ref 100.0
 P _obja/5/_v10_is_internal -2122844336
 P _obja/5/_v10_steers_with_gear 0
 P _obja/6/_obj_flags 16
-P _obja/6/_v10_att_file_stl landing gear 2.obj
+P _obja/6/_v10_att_file_stl wing 2.obj
 P _obja/6/_v10_att_part -1
 P _obja/6/_v10_att_phi_ref 0.0
 P _obja/6/_v10_att_psi_ref 0.0
@@ -813,8 +803,8 @@ P _obja/6/_v10_att_y_acf_prt_ref 0.0
 P _obja/6/_v10_att_z_acf_prt_ref 100.0
 P _obja/6/_v10_is_internal -2122844336
 P _obja/6/_v10_steers_with_gear 0
-P _obja/7/_obj_flags 16
-P _obja/7/_v10_att_file_stl wing 2.obj
+P _obja/7/_obj_flags 6157
+P _obja/7/_v10_att_file_stl cockpit/cockpit.obj
 P _obja/7/_v10_att_part -1
 P _obja/7/_v10_att_phi_ref 0.0
 P _obja/7/_v10_att_psi_ref 0.0
@@ -824,8 +814,8 @@ P _obja/7/_v10_att_y_acf_prt_ref 0.0
 P _obja/7/_v10_att_z_acf_prt_ref 100.0
 P _obja/7/_v10_is_internal -2122844336
 P _obja/7/_v10_steers_with_gear 0
-P _obja/8/_obj_flags 6157
-P _obja/8/_v10_att_file_stl cockpit/cockpit.obj
+P _obja/8/_obj_flags 9
+P _obja/8/_v10_att_file_stl first_class.obj
 P _obja/8/_v10_att_part -1
 P _obja/8/_v10_att_phi_ref 0.0
 P _obja/8/_v10_att_psi_ref 0.0
@@ -833,10 +823,10 @@ P _obja/8/_v10_att_the_ref 0.0
 P _obja/8/_v10_att_x_acf_prt_ref 0.0
 P _obja/8/_v10_att_y_acf_prt_ref 0.0
 P _obja/8/_v10_att_z_acf_prt_ref 100.0
-P _obja/8/_v10_is_internal -2122844336
+P _obja/8/_v10_is_internal -1971719296
 P _obja/8/_v10_steers_with_gear 0
-P _obja/9/_obj_flags 16
-P _obja/9/_v10_att_file_stl Vertical_stabilizer.obj
+P _obja/9/_obj_flags 0
+P _obja/9/_v10_att_file_stl interior.obj
 P _obja/9/_v10_att_part -1
 P _obja/9/_v10_att_phi_ref 0.0
 P _obja/9/_v10_att_psi_ref 0.0
@@ -844,9 +834,9 @@ P _obja/9/_v10_att_the_ref 0.0
 P _obja/9/_v10_att_x_acf_prt_ref 0.0
 P _obja/9/_v10_att_y_acf_prt_ref 0.0
 P _obja/9/_v10_att_z_acf_prt_ref 100.0
-P _obja/9/_v10_is_internal -2122844336
+P _obja/9/_v10_is_internal -1248725696
 P _obja/9/_v10_steers_with_gear 0
-P _obja/count 23
+P _obja/count 21
 P _panel_inst_3d 0
 P _part/0/_bot_s1 0.0
 P _part/0/_bot_s2 0.015625000
