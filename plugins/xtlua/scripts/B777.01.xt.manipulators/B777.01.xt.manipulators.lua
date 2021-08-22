@@ -46,6 +46,7 @@ IN_REPLAY - evaluates to 0 if replay is off, 1 if replay mode is on
 --**                               FIND X-PLANE DATAREFS                             **--
 --*************************************************************************************--
 
+simDR_autothrottle_enabled                = find_dataref("sim/cockpit2/autopilot/autothrottle_enabled")
 
 --*************************************************************************************--
 --**                              CUSTOM DATAREF HANDLERS                            **--
@@ -64,8 +65,6 @@ B777DR_efis_button_positions              = deferred_dataref("Strato/777/cockpit
 B777DR_ovhd_fwd_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/fwd/buttons/position", "array[20]")
 B777DR_ovhd_ctr_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/ctr/buttons/position", "array[20]")
 B777DR_ovhd_aft_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/aft/buttons/position", "array[20]")
-
-B777DR_main_pnl_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/main_pnl/buttons/position", "array[20]")
 
 B777DR_button_cover_positions             = deferred_dataref("Strato/777/cockpit/buttons/position", "array[18]")
 
@@ -90,10 +89,12 @@ simCMD_ap_vs                             = find_command("sim/autopilot/vertical_
 simCMD_ap_lnav                           = find_command("sim/autopilot/FMS")
 simCMD_ap_vnav                           = find_command("sim/autopilot/vnav")
 simCMD_ap_disco                          = find_command("sim/autopilot/disconnect")
-simCMD_fd_capt_on                        = find_command("sim/autopilot/fdir_on")
+--[[simCMD_fd_capt_on                        = find_command("sim/autopilot/fdir_on")
 simCMD_fd_capt_off                       = find_command("sim/autopilot/servos_fdir_off")
 simCMD_fd_fo_on                          = find_command("sim/autopilot/fdir2_on")
-simCMD_fd_fo_off                         = find_command("sim/autopilot/servos_fdir2_off")
+simCMD_fd_fo_off                         = find_command("sim/autopilot/servos_fdir2_off")]]
+simCMD_fd_capt                           = find_command("sim/autopilot/fdir_toggle")
+simCMD_fd_fo                             = find_command("sim/autopilot/fdir2_toggle")
 
 ---EFIS----------
 simCMD_efis_wxr                          = find_command("sim/instruments/EFIS_wxr")
@@ -263,45 +264,57 @@ function B777_ap_disengage_switch_CMDhandler(phase, duration)  -- A/P DISENGAGE 
    end
 end
 
-function B777_fd_capt_dn_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
-   if phase == 1 then
-      B777DR_mcp_button_positions[13] = 0
-      simCMD_fd_capt_off:once()
+function B777_fd_capt_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+   if phase == 0 then
+      B777DR_mcp_button_positions[13] = 1- B777DR_mcp_button_positions[13]
+      simCMD_fd_capt:once()
    end
 end
 
-function B777_fd_capt_up_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
-   if phase == 1 then
+--[[function B777_fd_capt_up_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+   if phase == 0 then
          simCMD_fd_capt_on:once()
          B777DR_mcp_button_positions[13] = 1
    end
-end
+end]]
 
-function B777_fd_fo_dn_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
-   if phase == 1 then
-      B777DR_mcp_button_positions[14] = 0
-      simCMD_fd_fo_off:once()
+function B777_fd_fo_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+   if phase == 0 then
+      B777DR_mcp_button_positions[14] = 1 - B777DR_mcp_button_positions[14]
+      simCMD_fd_fo:once()
    end
 end
 
-function B777_fd_fo_up_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
-   if phase == 1 then
+--[[function B777_fd_fo_up_CMDhandler(phase, duration)              -- CAPTAIN F/D SWITCH
+   if phase == 0 then
          simCMD_fd_fo_on:once()
          B777DR_mcp_button_positions[14] = 1
    end
-end
+end]]
 
---[[
-function B777_autothrottle_switch_CMDhandler()
-   if phase == 1 then
-      if B777DR_mcp_button_positions[15] == 0 then
-         B777DR_mcp_button_positions[15] = 1
-      elseif  B777DR_mcp_button_positions[15] == 1 then
-         B777DR_mcp_button_positions[15] = 0
-      end
+function B777_autothrottle_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      B777DR_mcp_button_positions[15] = 1 - B777DR_mcp_button_positions[15]
    end
 end
-]]
+
+function B777_autothrottle_spd_switch_CMDhandler(phase, duration)
+   if phase == 0 then
+      if B777DR_mcp_button_positions[15] == 1 then
+         if simDR_autothrottle_enabled == 0 then
+            simDR_autothrottle_enabled = 1
+         elseif  simDR_autothrottle_enabled == 1 then
+            simDR_autothrottle_enabled = 0
+         end
+      end
+      B777DR_mcp_button_positions[16] = 1
+   elseif phase == 1 then
+      B777DR_mcp_button_positions[16] = 1
+   elseif phase == 2 then
+      B777DR_mcp_button_positions[16] = 0
+   end
+end
+
 
 ---EFIS----------
 
@@ -361,6 +374,7 @@ function B777_efis_apt_switch_CMDhandler(phase, duration)
       B777DR_efis_button_positions[6] = 0
    end
 end
+
 
 ---OVERHEAD----------
 
@@ -461,13 +475,14 @@ B777CMD_mcp_ap_engage_1                   = deferred_command("Strato/B777/button
 B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler)
 B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
 
-B777CMD_mcp_flightdirector_capt_on        = deferred_command("Strato/B777/button_switch/mcp/fd/capt/on", "Captain Flight Director Switch On", B777_fd_capt_up_CMDhandler)
-B777CMD_mcp_flightdirector_capt_off       = deferred_command("Strato/B777/button_switch/mcp/fd/capt/off", "Captain Flight Director Switch Off", B777_fd_capt_dn_CMDhandler)
+B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
+--B777CMD_mcp_flightdirector_capt_off       = deferred_command("Strato/B777/button_switch/mcp/fd/capt/off", "Captain Flight Director Switch Off", B777_fd_capt_dn_CMDhandler)
 
-B777CMD_mcp_flightdirector_fo_on          = deferred_command("Strato/B777/button_switch/mcp/fd/fo/on", "F/O Flight Director Switch On", B777_fd_fo_up_CMDhandler)
-B777CMD_mcp_flightdirector_fo_off         = deferred_command("Strato/B777/button_switch/mcp/fd/fo/off", "F/O Flight Director Switch Off", B777_fd_fo_dn_CMDhandler)
+B777CMD_mcp_flightdirector_fo             = deferred_command("Strato/B777/button_switch/mcp/fd/fo", "F/O Flight Director Switch", B777_fd_fo_CMDhandler)
+--B777CMD_mcp_flightdirector_fo_off         = deferred_command("Strato/B777/button_switch/mcp/fd/fo/off", "F/O Flight Director Switch Off", B777_fd_fo_dn_CMDhandler)
 
---B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
+B777CMD_mcp_autothrottle_switch           = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
+B777CMD_mcp_autothrottle_spd_mode         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/spd", "Autothrottle Speed Mode", B777_autothrottle_spd_switch_CMDhandler)
 --B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
 
 B777CMD_mcp_ap_loc                        = deferred_command("Strato/B777/button_switch/mcp/ap/loc", "Localizer A/P Mode", B777_ap_loc_switch_CMDhandler)
@@ -493,15 +508,7 @@ B777CMD_efis_apt_button                   = deferred_command("Strato/B777/button
 
 --FORWARD-----
 
---[[LIGHT SWITCHES USE THEIR RESPECTIVE DEFAULT DATAREFS:
-
-sim/cockpit2/switches/taxi_light_on
-sim/cockpit2/switches/landing_lights_switch
-sim/cockpit2/switches/strobe_lights_on
-sim/cockpit2/switches/navigation_lights_on
-sim/cockpit2/switches/beacon_on
-
-]]
+--LIGHT SWITCHES USE THEIR RESPECTIVE DEFAULT DATAREFS
 
 --CENTER-----
 

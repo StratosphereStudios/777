@@ -32,13 +32,14 @@ B777CMD_mcp_ap_engage_1                   = deferred_command("Strato/B777/button
 B777CMD_mcp_ap_engage_2                   = deferred_command("Strato/B777/button_switch/mcp/ap/engage_2", "Engage A/P 2", B777_ap_engage_switch_2_CMDhandler)
 B777CMD_mcp_ap_disengage_switch           = deferred_command("Strato/B777/button_switch/mcp/ap/disengage", "Disengage A/P", B777_ap_disengage_switch_CMDhandler)
 
-B777CMD_mcp_flightdirector_capt_on        = deferred_command("Strato/B777/button_switch/mcp/fd/capt/on", "Captain Flight Director Switch On", B777_fd_capt_up_CMDhandler)
-B777CMD_mcp_flightdirector_capt_off       = deferred_command("Strato/B777/button_switch/mcp/fd/capt/off", "Captain Flight Director Switch Off", B777_fd_capt_dn_CMDhandler)
+B777CMD_mcp_flightdirector_capt           = deferred_command("Strato/B777/button_switch/mcp/fd/capt", "Captain Flight Director Switch", B777_fd_capt_CMDhandler)
+--B777CMD_mcp_flightdirector_capt_off       = deferred_command("Strato/B777/button_switch/mcp/fd/capt/off", "Captain Flight Director Switch Off", B777_fd_capt_dn_CMDhandler)
 
-B777CMD_mcp_flightdirector_fo_on          = deferred_command("Strato/B777/button_switch/mcp/fd/fo/on", "F/O Flight Director Switch On", B777_fd_fo_up_CMDhandler)
-B777CMD_mcp_flightdirector_fo_off         = deferred_command("Strato/B777/button_switch/mcp/fd/fo/off", "F/O Flight Director Switch Off", B777_fd_fo_dn_CMDhandler)
+B777CMD_mcp_flightdirector_fo             = deferred_command("Strato/B777/button_switch/mcp/fd/fo", "F/O Flight Director Switch", B777_fd_fo_CMDhandler)
+--B777CMD_mcp_flightdirector_fo_off         = deferred_command("Strato/B777/button_switch/mcp/fd/fo/off", "F/O Flight Director Switch Off", B777_fd_fo_dn_CMDhandler)
 
---B777CMD_mcp_autothrottle_switch_1         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
+B777CMD_mcp_autothrottle_switch           = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_1", "Autothrottle Switch 1", B777_autothrottle_switch_CMDhandler)
+B777CMD_mcp_autothrottle_spd_mode         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/spd", "Autothrottle Speed Mode", B777_autothrottle_spd_switch_CMDhandler)
 --B777CMD_mcp_autothrottle_switch_2         = deferred_command("Strato/B777/button_switch/mcp/autothrottle/switch_2", "Autothrottle Switch 2", B777_autothrottle_switch_2_CMDhandler)
 
 B777CMD_mcp_ap_loc                        = deferred_command("Strato/B777/button_switch/mcp/ap/loc", "Localizer A/P Mode", B777_ap_loc_switch_CMDhandler)
@@ -64,15 +65,7 @@ B777CMD_efis_apt_button                   = deferred_command("Strato/B777/button
 
 --FORWARD-----
 
---[[LIGHT SWITCHES USE THEIR RESPECTIVE DEFAULT DATAREFS:
-
-sim/cockpit2/switches/taxi_light_on
-sim/cockpit2/switches/landing_lights_switch
-sim/cockpit2/switches/strobe_lights_on
-sim/cockpit2/switches/navigation_lights_on
-sim/cockpit2/switches/beacon_on
-
-]]
+--LIGHT SWITCHES USE THEIR RESPECTIVE DEFAULT DATAREFS
 
 --CENTER-----
 
@@ -107,7 +100,5 @@ B777DR_efis_button_positions              = deferred_dataref("Strato/777/cockpit
 B777DR_ovhd_fwd_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/fwd/buttons/position", "array[20]")
 B777DR_ovhd_ctr_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/ctr/buttons/position", "array[20]")
 B777DR_ovhd_aft_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/aft/buttons/position", "array[20]")
-
-B777DR_main_pnl_button_positions          = deferred_dataref("Strato/777/cockpit/ovhd/main_pnl/buttons/position", "array[20]")
 
 B777DR_button_cover_positions             = deferred_dataref("Strato/777/cockpit/buttons/position", "array[18]")
